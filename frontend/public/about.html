@@ -11,11 +11,11 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark mb-3 shadow-lg">
     <div class="container-fluid">
       <!-- Logo o marca -->
       <a class="navbar-brand" href="#">
-        <img src="../src/img/lockdev.webp" width="50" height="50" alt="">
+        <img src="../src/img/TEA-removebg-preview.png" width="50" height="50" class="rounded-circle" alt="Logo">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,48 +25,49 @@
         <!-- Enlaces de navegación alineados a la izquierda -->
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+            <a class="nav-link active fw-bold text-uppercase custom-hover" aria-current="page" href="home.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="blog.html">Blog</a>
+            <a class="nav-link btn btn-outline-light mx-2 px-3 custom-hover-btn" href="blog.html">Crear frase</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link btn btn-outline-light mx-2 px-3 custom-hover-btn" href="about.html">Chat</a>
           </li>
         </ul>
         <!-- Nombre de usuario y botón de logout alineados a la derecha -->
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" id="user-name" href="#">NotLogged</a>
+            <a class="nav-link text-light custom-hover" id="user-name" href="#">NotLogged</a>
           </li>
           <li class="nav-item">
-            <a id="logout" class="nav-link" href="#">Salir</a>
+            <a id="logout" class="nav-link btn btn-danger text-white ms-3 custom-hover-btn" href="#">Salir</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
-
-  <div class="container">
-    <h1>Sobre Nosotros</h1>
-    <hr>
-    <div class="row">
-      <div class="col-md-8">
-        <p>Bienvenidos a <strong>LockDev</strong>, un espacio dedicado a todos los entusiastas del desarrollo de software, tanto principiantes como profesionales. Fundado en 2020 por un grupo de apasionados desarrolladores, nuestro objetivo es compartir conocimiento, experiencias y recursos que ayuden a otros a crecer en su carrera profesional.</p>
-        <p>Nuestra misión es simplificar el aprendizaje del desarrollo de software proporcionando contenido de calidad, tutoriales prácticos y consejos útiles sobre las últimas tecnologías y mejores prácticas de la industria. Creemos en el poder de la comunidad y en la importancia de mantenerse actualizado en un campo tan dinámico y en constante evolución como es el desarrollo de software.</p>
-        <p>En LockDev, cubrimos una amplia gama de temas, desde lenguajes de programación como JavaScript, Python y Java, hasta frameworks modernos, metodologías ágiles, y herramientas de DevOps como Docker y Kubernetes. Nos enfocamos en crear contenido accesible y fácil de entender, sin importar el nivel de experiencia de nuestros lectores.</p>
-        <p>Únete a nuestra comunidad y participa en la conversación. Nos encantaría escuchar tus ideas, sugerencias y experiencias. Juntos, podemos construir un futuro mejor a través de la tecnología.</p>
-      </div>
-      <div class="col-md-4">
-        <img src="src/img/lockdev.webp" class="img-fluid" alt="Equipo de LockDev">
-      </div>
-    </div>
-  </div>
-
-  <footer class="text-center mt-5 border-top pt-3">
-    <p>&copy; 2024 LockDev. Todos los derechos reservados.</p>
-  </footer>
+  
+  <!-- CSS personalizado para el hover -->
+  <style>
+    /* Efecto hover en los enlaces */
+    .custom-hover:hover {
+      color: #00d4ff !important; /* Cambia el color del texto al pasar el cursor */
+      transition: color 0.3s ease; /* Transición suave de color */
+    }
+  
+    /* Efecto hover en los botones */
+    .custom-hover-btn:hover {
+      background-color: #00d4ff !important; /* Cambia el color de fondo del botón al pasar el cursor */
+      border-color: #00d4ff !important; /* Cambia el color del borde */
+      color: #fff !important; /* Cambia el color del texto */
+      transition: background-color 0.3s ease, border-color 0.3s ease; /* Transición suave para el fondo y borde */
+    }
+  
+    /* Efecto de sombra en los botones al hacer hover */
+    .custom-hover-btn:hover {
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4); /* Sombra con un toque de color */
+    }
+  </style>
 
 
   <script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js'

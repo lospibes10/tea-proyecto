@@ -17,11 +17,11 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark mb-3 shadow-lg">
     <div class="container-fluid">
       <!-- Logo o marca -->
       <a class="navbar-brand" href="#">
-        <img src="src/img/lockdev.webp" width="50" height="50" alt="">
+        <img src="../src/img/TEA-removebg-preview.png" width="50" height="50" class="rounded-circle" alt="Logo">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,89 +31,50 @@
         <!-- Enlaces de navegación alineados a la izquierda -->
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+            <a class="nav-link active fw-bold text-uppercase custom-hover" aria-current="page" href="home.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="blog.html">Blog</a>
+            <a class="nav-link btn btn-outline-light mx-2 px-3 custom-hover-btn" href="crear-frase.html">Crear frase</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link btn btn-outline-light mx-2 px-3 custom-hover-btn" href="chat.html">Chat</a>
           </li>
         </ul>
         <!-- Nombre de usuario y botón de logout alineados a la derecha -->
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" id="user-name" href="#">NotLogged</a>
+            <a class="nav-link text-light custom-hover" id="user-name" href="#">NotLogged</a>
           </li>
           <li class="nav-item">
-            <a id="logout" class="nav-link" href="#">Salir</a>
+            <a id="logout" class="nav-link btn btn-danger text-white ms-3 custom-hover-btn" href="#">Salir</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  
+  <!-- CSS personalizado para el hover -->
+  <style>
+    /* Efecto hover en los enlaces */
+    .custom-hover:hover {
+      color: #00d4ff !important; /* Cambia el color del texto al pasar el cursor */
+      transition: color 0.3s ease; /* Transición suave de color */
+    }
+  
+    /* Efecto hover en los botones */
+    .custom-hover-btn:hover {
+      background-color: #00d4ff !important; /* Cambia el color de fondo del botón al pasar el cursor */
+      border-color: #00d4ff !important; /* Cambia el color del borde */
+      color: #fff !important; /* Cambia el color del texto */
+      transition: background-color 0.3s ease, border-color 0.3s ease; /* Transición suave para el fondo y borde */
+    }
+  
+    /* Efecto de sombra en los botones al hacer hover */
+    .custom-hover-btn:hover {
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4); /* Sombra con un toque de color */
+    }
+  </style>
 
-
-  <div class="container">
-    <h1>Blog LockDev</h1>
-    <hr>
-
-    <!-- Sección de introducción -->
-    <div class="mb-4">
-      <p>En este blog, exploramos las últimas tendencias, técnicas y herramientas en el mundo del desarrollo de software. 
-         Desde consejos para principiantes hasta avanzadas técnicas de programación, 
-         aquí encontrarás recursos útiles para mejorar tus habilidades y mantenerte al día con la evolución de la industria.</p>
-    </div>
-
-    <!-- Sección de publicaciones recientes -->
-    <h2>Publicaciones Recientes</h2>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card mb-4">
-          <img src="../src/img/javascript.png" class="card-img-top img-card" alt="JavaScript">
-          <div class="card-body">
-            <h5 class="card-title">Introducción a JavaScript ES6</h5>
-            <p class="card-text">Descubre las nuevas características de ES6 que están cambiando la forma en que escribimos JavaScript.</p>
-            <a href="#" class="btn btn-primary">Leer más</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card mb-4">
-          <img src="../src/img/docker.png" class="card-img-top img-card" alt="Docker">
-          <div class="card-body">
-            <h5 class="card-title">Docker para Desarrolladores</h5>
-            <p class="card-text">Aprende cómo Docker puede simplificar la configuración de tu entorno de desarrollo.</p>
-            <a href="#" class="btn btn-primary">Leer más</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card mb-4">
-          <img src="src/img/agile.png" class="card-img-top img-card" alt="Agile">
-          <div class="card-body">
-            <h5 class="card-title">Metodologías Ágiles en Desarrollo de Software</h5>
-            <p class="card-text">Explora cómo las metodologías ágiles pueden mejorar la eficiencia y la colaboración en tu equipo de desarrollo.</p>
-            <a href="#" class="btn btn-primary">Leer más</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sección de categorías -->
-    <h2>Categorías</h2>
-    <ul class="list-group mb-4">
-      <li class="list-group-item"><a href="#">JavaScript</a></li>
-      <li class="list-group-item"><a href="#">Docker</a></li>
-      <li class="list-group-item"><a href="#">Metodologías Ágiles</a></li>
-      <li class="list-group-item"><a href="#">Desarrollo Web</a></li>
-      <li class="list-group-item"><a href="#">Bases de Datos</a></li>
-    </ul>
-  </div>
-
-  <footer class="text-center mt-5 border-top pt-3">
-    <p>&copy; 2024 LockDev. Todos los derechos reservados.</p>
-  </footer>
   <script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js'
     integrity='sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r'
     crossorigin='anonymous'></script>
