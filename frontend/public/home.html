@@ -13,7 +13,6 @@
 
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark mb-3 shadow-lg">
     <div class="container-fluid">
-      <!-- Logo o marca -->
       <a class="navbar-brand" href="#">
         <img src="../src/img/TEA-removebg-preview.png" width="50" height="50" class="rounded-circle" alt="Logo">
       </a>
@@ -22,7 +21,6 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <!-- Enlaces de navegación alineados a la izquierda -->
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
             <a class="nav-link active fw-bold text-uppercase custom-hover" aria-current="page" href="home.html">Home</a>
@@ -34,7 +32,6 @@
             <a class="nav-link btn btn-outline-light mx-2 px-3 custom-hover-btn" href="about.html">Chat</a>
           </li>
         </ul>
-        <!-- Nombre de usuario y botón de logout alineados a la derecha -->
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link text-light custom-hover" id="user-name" href="#">NotLogged</a>
@@ -46,26 +43,138 @@
       </div>
     </div>
   </nav>
-  
+
+  <!-- Contenido principal aquí -->
+  <div class="main-content">
+    <!-- Tu contenido aquí -->
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <a href="https://flowbite.com/" class="logo">
+                <img src="https://flowbite.com/docs/images/logo.svg" class="logo-img" alt="Flowbite Logo" />
+                <span class="logo-text">Flowbite</span>
+            </a>
+            <ul class="footer-links">
+                <li><a href="#" class="link">About</a></li>
+                <li><a href="#" class="link">Privacy Policy</a></li>
+                <li><a href="#" class="link">Licensing</a></li>
+                <li><a href="#" class="link">Contact</a></li>
+            </ul>
+        </div>
+        <hr class="divider" />
+        <span class="footer-bottom">© 2023 <a class="footer-link">Tea</a>. All Rights Reserved.</span>
+    </div>
+  </footer>
+
   <!-- CSS personalizado para el hover -->
   <style>
-    /* Efecto hover en los enlaces */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #f8f9fa; /* Color de fondo claro para el resto de la página */
+    }
+
+    .main-content {
+      flex: 1;
+    }
+
     .custom-hover:hover {
-      color: #00d4ff !important; /* Cambia el color del texto al pasar el cursor */
-      transition: color 0.3s ease; /* Transición suave de color */
+      color: #00d4ff !important;
+      transition: color 0.3s ease;
     }
-  
-    /* Efecto hover en los botones */
+
     .custom-hover-btn:hover {
-      background-color: #00d4ff !important; /* Cambia el color de fondo del botón al pasar el cursor */
-      border-color: #00d4ff !important; /* Cambia el color del borde */
-      color: #fff !important; /* Cambia el color del texto */
-      transition: background-color 0.3s ease, border-color 0.3s ease; /* Transición suave para el fondo y borde */
+      background-color: #00d4ff !important;
+      border-color: #00d4ff !important;
+      color: #fff !important;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
     }
-  
-    /* Efecto de sombra en los botones al hacer hover */
+
     .custom-hover-btn:hover {
-      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4); /* Sombra con un toque de color */
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+    }
+
+    .footer {
+      background-color: #343a40; /* Fondo oscuro */
+      color: white; /* Color de texto blanco */
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin: 1rem;
+      padding: 1rem; /* Agrega un poco de padding */
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .logo-img {
+      height: 2rem;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-left: 0.5rem;
+      color: white; /* Color del texto de la logo */
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-right: 1rem;
+    }
+
+    .link {
+      font-size: 0.875rem;
+      color: lightgray; /* Color de texto claro */
+      text-decoration: none;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    .divider {
+      margin: 1.5rem 0;
+      border: 1px solid #495057; /* Color de borde más oscuro */
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.875rem;
+      color: lightgray; /* Color del texto más claro */
+    }
+
+    .footer-link {
+      color: lightgray; /* Color del enlace en el pie de página */
+      text-decoration: none;
+    }
+
+    .footer-link:hover {
+      text-decoration: underline;
     }
   </style>
 
