@@ -1,0 +1,109 @@
+:root {
+    --primary-color: #4e8cff; /* Color principal */
+    --btn-hover-color: #3a6fe8;
+    --card-bg: #2c2c2c;
+    --input-bg: #1f1f1f;
+    --input-border: #4e8cff;
+    --text-color: #ffffff;
+    --label-color: #888;
+  }
+  
+  body {
+    background-color: #1e1e1e;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+  }
+  
+  .container {
+    margin-top: 5vh; /* Margen superior */
+  }
+  
+  .custom-card {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-color);
+  }
+  
+  .form-control {
+    background-color: var(--input-bg);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-control:focus {
+    border-color: var(--input-border);
+    box-shadow: none;
+  }
+  
+  .form-control:placeholder-shown{
+  color: var(--text-color);
+  }
+  
+  
+  label {
+    color: var(--label-color);
+    font-weight: 500;
+  }
+  
+  .custom-btn {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    border: none;
+  }
+  
+  .custom-btn:hover {
+    background-color: var(--btn-hover-color);
+  }
+  
+  .register-link {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  .register-link:hover {
+    color: var(--btn-hover-color);
+    text-decoration: underline;
+  }
+  
+  /* Cambiar el color del texto "¿No tienes cuenta?" a blanco */
+  p.text-center.mt-3 {
+    color: #ffffff;
+  }
+  
+  /* Media queries para pantallas pequeñas */
+  @media (max-width: 576px) {
+    .custom-card {
+        padding: 1.5rem;
+    }
+  
+    h3 {
+        font-size: 1.8rem;
+    }
+  
+    .custom-btn {
+        padding: 0.7rem;
+    }
+  
+    .d-flex {
+        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+    }
+  
+    img {
+        max-width: 70%; /* Ajustar el tamaño de la imagen en pantallas pequeñas */
+    }
+  }
+  
+  
