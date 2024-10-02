@@ -4,90 +4,433 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apock web design</title>
+    <title>Apock Web Design</title>
     <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-    <style>
-        /* Estilos omitidos para brevedad, mantenlos igual que antes */
+    <style type="text/css">
+        /* Estilos generales */
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            line-height: 1.4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: #333;
+            font-family: "Arial", Segoe UI, Tahoma, sans-serif, Helvetica Neue, Helvetica;
+        }
+
+        .boton-volver {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #005f73;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+        }
+
+        .boton-volver i {
+            font-size: 1.5rem;
+        }
+
+        .boton-volver:hover {
+            background-color: #004552;
+        }
+
+        .seccion-perfil-usuario {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .perfil-usuario-header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(#005f73, transparent);
+            margin-bottom: 1.25rem;
+        }
+
+        .perfil-usuario-portada {
+            display: block;
+            position: relative;
+            width: 90%;
+            height: 17rem;
+            background-color: #005f73;
+            border-radius: 0 0 20px 20px;
+            background-size: cover;
+        }
+
+        .perfil-usuario-portada .boton-portada {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            border: 0;
+            border-radius: 8px;
+            padding: 12px 25px;
+            background-color: rgba(0, 0, 0, .5);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .perfil-usuario-avatar {
+            display: flex;
+            width: 180px;
+            height: 180px;
+            align-items: center;
+            justify-content: center;
+            border: 7px solid #FFFFFF;
+            background-color: #DFE5F2;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            bottom: -40px;
+            left: calc(50% - 90px);
+            z-index: 1;
+        }
+
+        .perfil-usuario-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+        }
+
+        .perfil-usuario-avatar .boton-avatar {
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            border: 0;
+            background-color: #005f73;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .perfil-usuario-avatar .boton-avatar i {
+            color: #fff;
+        }
+
+        .perfil-usuario-body {
+            width: 70%;
+            position: relative;
+            max-width: 750px;
+        }
+
+        .perfil-usuario-body .titulo {
+            display: block;
+            width: 100%;
+            font-size: 1.75em;
+            margin-bottom: 0.5rem;
+            color: #333;
+            text-align: center; /* Centra el título */
+        }
+
+        .perfil-usuario-body .texto {
+            color: #666;
+            font-size: 0.95em;
+            text-align: center; /* Centra la descripción */
+        }
+
+        .perfil-usuario-footer,
+        .perfil-usuario-bio {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 0 12px rgba(0, 0, 0, .1);
+            background-color: #F9F9F9;
+            border-radius: 15px;
+            width: 100%;
+            flex-direction: column; /* Cambiado para permitir un mejor control del contenido */
+            align-items: center; /* Centra el contenido */
+        }
+
+        .perfil-usuario-bio {
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+
+        .lista-datos {
+            width: 50%;
+            list-style: none;
+        }
+
+        .lista-datos li {
+            padding: 5px 0;
+        }
+
+        .lista-datos li > .icono {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            vertical-align: middle;
+            color: #005f73;
+        }
+
+        .redes-sociales {
+            position: absolute;
+            right: calc(0px - 50px - 1rem);
+            top: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .redes-sociales .boton-redes {
+            border: 0;
+            background-color: #fff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: #fff;
+            box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+            font-size: 1.3rem;
+        }
+
+        .boton-redes.facebook {
+            background-color: #005f73;
+        }
+
+        .boton-redes.twitter {
+            background-color: #28A0B8;
+        }
+
+        .boton-redes.instagram {
+            background: linear-gradient(45deg, #FF2DFD, #40A7FF);
+        }
+
+        @media (max-width: 750px) {
+            .lista-datos {
+                width: 100%;
+            }
+
+            .perfil-usuario-portada,
+            .perfil-usuario-body {
+                width: 95%;
+            }
+
+            .redes-sociales {
+                position: relative;
+                flex-direction: row;
+                width: 100%;
+                left: 0;
+                text-align: center;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .redes-sociales .boton-redes + .boton-redes {
+                margin-left: 1rem;
+                margin-top: 0;
+            }
+        }
+
+        .mensaje a {
+            color: inherit;
+            margin-right: .5rem;
+            display: inline-block;
+        }
+
+        .mensaje a:hover {
+            color: #005f73;
+            transform: scale(1.4);
+        }
+
+        /* Estilos para el formulario de edición */
+        .formulario-edicion {
+            display: none;
+            flex-direction: column;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, .1);
+            margin-top: 1rem;
+            width: 70%;
+            max-width: 750px;
+        }
+
+        .formulario-edicion input {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .boton-editar {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #005f73;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .boton-editar:hover {
+            background-color: #004552;
+        }
     </style>
 </head>
 
 <body>
 
+    <button class="boton-volver" onclick="window.history.back();"><i class="fas fa-arrow-left"></i></button>
+
     <section class="seccion-perfil-usuario">
         <div class="perfil-usuario-header">
-            <div class="perfil-usuario-portada" id="portada">
+            <div class="perfil-usuario-portada" id="cover-photo" style="background-image: url('');">
                 <div class="perfil-usuario-avatar">
-                    <img id="avatar-image" src="http://localhost/multimedia/relleno/img-c9.png" alt="img-avatar">
-                    <input type="file" id="file-avatar" style="display: none;" accept="image/*">
-                    <button type="button" class="boton-avatar" onclick="document.getElementById('file-avatar').click();">
+                    <img id="profile-pic" src="http://localhost/multimedia/relleno/img-c9.png" alt="img-avatar">
+                    <input type="file" id="file-input-avatar" accept="image/*" style="display: none;">
+                    <button type="button" class="boton-avatar" onclick="document.getElementById('file-input-avatar').click();">
                         <i class="far fa-image"></i>
                     </button>
                 </div>
-                <button type="button" class="boton-portada" onclick="document.getElementById('color-selector').classList.toggle('visible');">
-                    <i class="far fa-image"></i> Cambiar fondo
+                <button type="button" class="boton-portada" onclick="document.getElementById('file-input-cover').click();">
+                    <i class="far fa-image"></i> Cambiar portada
                 </button>
-                <div id="color-selector" style="display: none; position: absolute; top: 3rem; right: 1rem; background-color: white; padding: 1rem; border-radius: 8px; box-shadow: 0 0 12px rgba(0,0,0,0.2);">
-                    <label for="color-options">Selecciona un color:</label>
-                    <select id="color-options" onchange="changeBackgroundColor();">
-                        <option value="linear-gradient(45deg, #BC3CFF, #317FFF)">Azul y Morado</option>
-                        <option value="linear-gradient(45deg, #FF5722, #FFC107)">Naranja y Amarillo</option>
-                        <option value="linear-gradient(45deg, #4CAF50, #8BC34A)">Verde y Lima</option>
-                        <option value="linear-gradient(45deg, #E91E63, #F44336)">Rosa y Rojo</option>
-                    </select>
-                </div>
+                <input type="file" id="file-input-cover" accept="image/*" style="display: none;">
             </div>
         </div>
+
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo">Maria Alejandra De la Cruz</h3>
-                <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h3 class="titulo" id="username"></h3>
+                <p class="texto" id="user-description"></p>
+                <button class="boton-editar" onclick="toggleEditForm()">Editar</button>
+            </div>
+
+            <div class="formulario-edicion" id="edit-form">
+                <input type="text" id="new-username" placeholder="Nuevo nombre de usuario" />
+                <input type="text" id="new-text" placeholder="Nueva descripción" />
+                <button class="boton-editar" onclick="saveChanges()">Guardar cambios</button>
+            </div>
+
+            <div class="perfil-usuario-footer">
+                <ul class="lista-datos">
+                    <li><i class="icono fas fa-map-signs"></i> Dirección: Calle Falsa 123</li>
+                    <li><i class="icono fas fa-phone-alt"></i> Teléfono: 555-5555</li>
+                    <li><i class="icono fas fa-envelope"></i> Correo: contacto@apockweb.com</li>
+                </ul>
+                <ul class="lista-datos">
+                    <li><i class="icono fas fa-birthday-cake"></i> Fundado en: 2021</li>
+                    <li><i class="icono fas fa-users"></i> Clientes: Más de 200</li>
+                    <li><i class="icono fas fa-globe-americas"></i> Sitio Web: www.apockweb.com</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <script>
-        // Función para cambiar la imagen del avatar
-        document.getElementById('file-avatar').addEventListener('change', function(event) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                var avatarImage = e.target.result;
-                document.getElementById('avatar-image').src = avatarImage;
-                // Guardar la imagen en localStorage
-                localStorage.setItem('avatarImage', avatarImage);
+        const fileInputAvatar = document.getElementById('file-input-avatar');
+        const fileInputCover = document.getElementById('file-input-cover');
+        const profilePic = document.getElementById('profile-pic');
+        const coverPhoto = document.getElementById('cover-photo');
+        const editForm = document.getElementById('edit-form');
+        const usernameElement = document.getElementById('username');
+        const descriptionElement = document.getElementById('user-description');
+        const newUsernameInput = document.getElementById('new-username');
+        const newTextInput = document.getElementById('new-text');
+
+        // Load saved data on page load
+        window.addEventListener('load', () => {
+            const savedImage = localStorage.getItem('profileImage');
+            if (savedImage) {
+                profilePic.src = savedImage;
             }
-            reader.readAsDataURL(event.target.files[0]);
+
+            const savedCoverImage = localStorage.getItem('coverImage');
+            if (savedCoverImage) {
+                coverPhoto.style.backgroundImage = `url('${savedCoverImage}')`;
+            }
+
+            const savedUsername = localStorage.getItem('username');
+            if (savedUsername) {
+                usernameElement.innerText = savedUsername;
+            }
+
+            const savedDescription = localStorage.getItem('userDescription');
+            if (savedDescription) {
+                descriptionElement.innerText = savedDescription;
+            }
         });
 
-        // Función para cambiar el fondo de la portada
-        function changeBackgroundColor() {
-            var color = document.getElementById('color-options').value;
-            document.getElementById('portada').style.backgroundImage = color;
-            // Guardar el color en localStorage
-            localStorage.setItem('backgroundColor', color);
+        fileInputAvatar.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    profilePic.src = e.target.result;
+                    localStorage.setItem('profileImage', e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        fileInputCover.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    coverPhoto.style.backgroundImage = `url('${e.target.result}')`;
+                    localStorage.setItem('coverImage', e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function toggleEditForm() {
+            editForm.style.display = editForm.style.display === 'none' || editForm.style.display === '' ? 'flex' : 'none';
+            newUsernameInput.value = usernameElement.innerText;
+            newTextInput.value = descriptionElement.innerText;
         }
 
-        // Función para cargar los datos almacenados al iniciar la página
-        function loadProfileData() {
-            // Cargar imagen de avatar desde localStorage
-            var storedAvatarImage = localStorage.getItem('avatarImage');
-            if (storedAvatarImage) {
-                document.getElementById('avatar-image').src = storedAvatarImage;
+        function saveChanges() {
+            const newUsername = newUsernameInput.value.trim();
+            const newText = newTextInput.value.trim();
+
+            if (newUsername) {
+                usernameElement.innerText = newUsername;
+                localStorage.setItem('username', newUsername);
             }
 
-            // Cargar color de fondo desde localStorage
-            var storedBackgroundColor = localStorage.getItem('backgroundColor');
-            if (storedBackgroundColor) {
-                document.getElementById('portada').style.backgroundImage = storedBackgroundColor;
-                document.getElementById('color-options').value = storedBackgroundColor; // Actualiza el selector
+            if (newText) {
+                descriptionElement.innerText = newText;
+                localStorage.setItem('userDescription', newText);
             }
+
+            toggleEditForm();
         }
-
-        // Llamar a la función cuando se carga la página
-        window.onload = loadProfileData;
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
 </body>
 
