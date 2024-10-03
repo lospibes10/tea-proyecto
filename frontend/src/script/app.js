@@ -285,135 +285,159 @@ const pictograms = {
 ]
   };
   
-  // Referencias a elementos del DOM
-  const sentenceContainer = document.getElementById('sentence');
-  const pictogramContainer = document.getElementById('pictogram-container');
-  const finalResultContainer = document.getElementById('final-result');
-  const finalSentence = document.getElementById('final-sentence');
-  const confirmButton = document.getElementById('confirm-sentence');
-  const clearButton = document.getElementById('clear-sentence');
-  
-  // Mostrar pictogramas por categoría
-  document.getElementById('categories').addEventListener('click', (e) => {
-    const category = e.target.dataset.category;
-    if (category) {
-      loadPictograms(category);
-    }
-  });
-  
-  // Función para cargar pictogramas
-  function loadPictograms(category) {
-    pictogramContainer.innerHTML = '';
-    pictograms[category].forEach(pictogram => {
-      const imgElement = document.createElement('img');
-      imgElement.src = pictogram.img;
-      imgElement.alt = pictogram.text;
-      imgElement.className = "cursor-pointer";
-      imgElement.addEventListener('click', () => addPictogramToSentence(pictogram));
-      pictogramContainer.appendChild(imgElement);
-    });
-  }
-  
-//-----------------------------------------------------------------
-// Añadir pictograma a la frase con soporte para mover
-function addPictogramToSentence(pictogram) {
-  const pictogramElement = document.createElement('div');
-  pictogramElement.className = "pictogram flex items-center space-x-2 bg-white p-2 m-1 border rounded";
-  
-  const img = document.createElement('img');
-  img.src = pictogram.img;
-  img.alt = pictogram.text;
-  img.className = "w-16 h-16";  // Aquí puedes ajustar el tamaño de la imagen en la frase
-  img.draggable = true;  // Hacer la imagen arrastrable
-  img.addEventListener('dragstart', handleDragStart);
-  img.addEventListener('dragover', handleDragOver);
-  img.addEventListener('drop', handleDrop);
-  
-  const text = document.createElement('span');
-  text.textContent = pictogram.text;
-  
-  const removeButton = document.createElement('button');
-  removeButton.textContent = "X";
-  removeButton.className = "bg-red-500 text-white p-1 rounded";
-  removeButton.addEventListener('click', () => pictogramElement.remove());
-
-  pictogramElement.appendChild(img);
-  pictogramElement.appendChild(text);
-  pictogramElement.appendChild(removeButton);
-  pictogramElement.draggable = true; // Hacer arrastrable el pictograma completo
-  pictogramElement.addEventListener('dragstart', handleDragStart);
-  pictogramElement.addEventListener('dragover', handleDragOver);
-  pictogramElement.addEventListener('drop', handleDrop);
-
-  sentenceContainer.appendChild(pictogramElement);
-}
-
-// Variables para almacenar la imagen arrastrada
-let draggedItem = null;
-
-function handleDragStart(e) {
-  draggedItem = e.target.closest('.pictogram');
-}
-
-function handleDragOver(e) {
-  e.preventDefault();  // Evitar comportamiento por defecto para permitir el drop
-  const currentElement = e.target.closest('.pictogram');
-  if (currentElement && currentElement !== draggedItem) {
-    sentenceContainer.insertBefore(draggedItem, currentElement);
-  }
-}
-
-function handleDrop() {
-  draggedItem.classList.remove('invisible');  // Hacer visible el elemento nuevamente
-  draggedItem = null;  // Reiniciar la referencia
-}
-
-
-function handleDrop() {
-  draggedItem.classList.remove('invisible');  // Hacer visible el elemento nuevamente
-  draggedItem = null;  // Reiniciar la referencia
-}
-  
-  // Eliminar la frase completa
-  clearButton.addEventListener('click', () => {
-    sentenceContainer.innerHTML = '';
-  });
-  
-  // Confirmar y mostrar la frase final
-  confirmButton.addEventListener('click', () => {
-    const sentenceText = Array.from(sentenceContainer.children)
-      .map(child => child.querySelector('span').textContent)
-      .join(' ');
-    
-    finalSentence.textContent = sentenceText;
-    modal.classList.remove('hidden');  // Mostrar el modal
-  
-    speakSentence(sentenceText);  // Reproducir la frase con audio
-  });
-  
-  // Ocultar el modal cuando se hace clic en "Cerrar"
-  const closeModalButton = document.getElementById('close-modal');
-  closeModalButton.addEventListener('click', () => {
-    modal.classList.add('hidden');
-  });
-  
-  // Ocultar el modal cuando se presiona la tecla "Escape"
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      modal.classList.add('hidden');
-    }
-  });
-  
-  // Ocultar el modal cuando se hace clic en el botón "Cerrar" o fuera del modal
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal || e.target.classList.contains('close-modal')) {
-      modal.classList.add('hidden');
-    }
-  });
-  // Función para reproducir la frase con audio
-  function speakSentence(sentence) {
-    const utterance = new SpeechSynthesisUtterance(sentence);
-    utterance.lang = 'es-ES';
-    window.speechSynthesis.speak(utterance);
-  }
-  
+   // Referencias a elementos del DOM
+   const sentenceContainer = document.getElementById('sentence');
+   const pictogramContainer = document.getElementById('pictogram-container');
+   const finalResultContainer = document.getElementById('final-result');
+   const finalSentence = document.getElementById('final-sentence');
+   const confirmButton = document.getElementById('confirm-sentence');
+   const clearButton = document.getElementById('clear-sentence');
+   
+   // Mostrar pictogramas por categoría
+   document.getElementById('categories').addEventListener('click', (e) => {
+     const category = e.target.dataset.category;
+     if (category) {
+       loadPictograms(category);
+     }
+   });
+   
+   // Función para cargar pictogramas
+   function loadPictograms(category) {
+     pictogramContainer.innerHTML = '';
+     pictograms[category].forEach(pictogram => {
+       const imgElement = document.createElement('img');
+       imgElement.src = pictogram.img;
+       imgElement.alt = pictogram.text;
+       imgElement.className = "cursor-pointer";
+       imgElement.addEventListener('click', () => addPictogramToSentence(pictogram));
+       pictogramContainer.appendChild(imgElement);
+     });
+   }
+   
+ //-----------------------------------------------------------------
+ // Añadir pictograma a la frase con soporte para mover
+ function addPictogramToSentence(pictogram) {
+   const pictogramElement = document.createElement('div');
+   pictogramElement.className = "pictogram flex items-center space-x-2 bg-white p-2 m-1 border rounded";
+   
+   const img = document.createElement('img');
+   img.src = pictogram.img;
+   img.alt = pictogram.text;
+   img.className = "w-20 h-20";  // Aquí puedes ajustar el tamaño de la imagen en la frase
+   img.draggable = true;  // Hacer la imagen arrastrable
+   img.addEventListener('dragstart', handleDragStart);
+   img.addEventListener('dragover', handleDragOver);
+   img.addEventListener('drop', handleDrop);
+   
+   const text = document.createElement('span');
+   text.textContent = pictogram.text;
+   
+   const removeButton = document.createElement('button');
+   removeButton.textContent = "X";
+   removeButton.className = "bg-red-500 text-white p-1 rounded";
+   removeButton.addEventListener('click', () => pictogramElement.remove());
+ 
+   pictogramElement.appendChild(img);
+   pictogramElement.appendChild(text);
+   pictogramElement.appendChild(removeButton);
+   pictogramElement.draggable = true; // Hacer arrastrable el pictograma completo
+   pictogramElement.addEventListener('dragstart', handleDragStart);
+   pictogramElement.addEventListener('dragover', handleDragOver);
+   pictogramElement.addEventListener('drop', handleDrop);
+ 
+   sentenceContainer.appendChild(pictogramElement);
+ }
+ 
+ // Variables para almacenar la imagen arrastrada
+ let draggedItem = null;
+ 
+ function handleDragStart(e) {
+   draggedItem = e.target.closest('.pictogram');
+ }
+ 
+ function handleDragOver(e) {
+   e.preventDefault();  // Evitar comportamiento por defecto para permitir el drop
+   const currentElement = e.target.closest('.pictogram');
+   if (currentElement && currentElement !== draggedItem) {
+     sentenceContainer.insertBefore(draggedItem, currentElement);
+   }
+ }
+ 
+ function handleDrop() {
+   draggedItem.classList.remove('invisible');  // Hacer visible el elemento nuevamente
+   draggedItem = null;  // Reiniciar la referencia
+ }
+ 
+ 
+ function handleDrop() {
+   draggedItem.classList.remove('invisible');  // Hacer visible el elemento nuevamente
+   draggedItem = null;  // Reiniciar la referencia
+ }
+   
+   // Eliminar la frase completa
+   clearButton.addEventListener('click', () => {
+     sentenceContainer.innerHTML = '';
+   });
+   function speak(text) {
+     if ('speechSynthesis' in window) {
+       const speech = new SpeechSynthesisUtterance(text);
+       speech.lang = 'es-ES'; // Cambia esto al idioma que necesites
+       speech.rate = 1; // Controla la velocidad de la voz (1 es la velocidad normal)
+       speech.pitch = 1; // Controla el tono de la voz (1 es el tono normal)
+       speech.volume = 1; // Asegura que el volumen esté al máximo
+       window.speechSynthesis.speak(speech);
+       
+       speech.onend = function() {
+         console.log('La reproducción del texto ha finalizado.');
+       };
+       
+       speech.onerror = function(e) {
+         console.error('Error en la síntesis de voz:', e);
+       };
+     } else {
+       alert('Lo siento, su navegador no soporta texto a voz.');
+     }
+   }
+   
+   // Confirmar y mostrar la frase final
+   confirmButton.addEventListener('click', () => {
+     const sentenceText = Array.from(sentenceContainer.children)
+       .map(child => child.querySelector('span').textContent)
+       .join(' ');
+   
+     if (sentenceText.trim() === '') {
+       console.log('No hay texto para reproducir.');
+       return;
+     }
+   
+     console.log('Texto a reproducir:', sentenceText);
+     finalSentence.textContent = sentenceText;
+     modal.classList.remove('hidden');  // Mostrar el modal
+   
+     // Reproducir la frase en voz alta
+     speak(sentenceText);  // Aquí se ejecuta la función para leer la frase en voz alta
+   });
+   
+   
+   // Ocultar el modal cuando se hace clic en "Cerrar"
+   const closeModalButton = document.getElementById('close-modal');
+   closeModalButton.addEventListener('click', () => {
+     modal.classList.add('hidden');
+   });
+   
+   // Ocultar el modal cuando se presiona la tecla "Escape"
+   window.addEventListener('keydown', (e) => {
+     if (e.key === 'Escape') {
+       modal.classList.add('hidden');
+     }
+   });
+   
+   // Ocultar el modal cuando se hace clic en el botón "Cerrar" o fuera del modal
+   modal.addEventListener('click', (e) => {
+     if (e.target === modal || e.target.classList.contains('close-modal')) {
+       modal.classList.add('hidden');
+     }
+   });
+   // Función para reproducir la frase con audio
+ // Función para reproducir la frase con texto a voz
+ 
