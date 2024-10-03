@@ -63,6 +63,46 @@
       transform: translateY(-2px);
     }
 
+    .main-content {
+      flex: 1;
+      padding: 0; /* Eliminar el padding para que la imagen ocupe todo el espacio */
+      position: relative; /* Para posicionar el texto sobre la imagen */
+    }
+
+    .main-image-container {
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Para asegurar que la imagen no se salga del contenedor */
+    }
+
+    .main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Esto asegura que la imagen cubra todo el contenedor sin distorsionarse */
+      object-position: center; /* Centra la imagen */
+    }
+
+    .main-content-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white; /* Cambia el color del texto para que sea visible sobre la imagen */
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Añade sombra al texto para mejorar la legibilidad */
+      width: 80%; /* Ajusta según sea necesario */
+    }
+
+    .main-content-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .main-content-text p {
+      font-size: 1.2rem;
+    }
+
+
     .footer {
       background-color: #343a40;
       color: white;
@@ -185,10 +225,9 @@
     </div>
   </nav>
 
-  <div class="main-content">
+  <div class="main-content"></div>
     <div class="container">
-      <h1 class="text-center mb-4">Bienvenido a nuestra aplicación</h1>
-      <p class="text-center">Aquí puedes añadir más contenido para tu página de inicio.</p>
+      <img src="../src/img/Diseno_sin_titulo1.png" alt="Imagen principal" class="main-image">
     </div>
   </div>
 

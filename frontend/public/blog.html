@@ -4,17 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Page</title>
+  <title>Creador de Frases con Pictogramas</title>
+  <script src="../src/script/app.js" defer></script>
   <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'
     integrity='sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH' crossorigin='anonymous'>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
   <style>
-    body {
+    /* body {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       background-color: #f8f9fa;
-    }
+    } */
 
     .main-content {
       flex: 1;
@@ -144,7 +147,7 @@
   </style>
 </head>
 
-<body>
+<body class="bg-gray-100">
 
   <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
     <div class="container-fluid">
@@ -184,11 +187,46 @@
     </div>
   </nav>
 
-  <div class="main-content">
-    <div class="container">
-      <h1 class="text-center mb-4">Bienvenido a nuestra aplicación</h1>
-      <p class="text-center">Aquí puedes añadir más contenido para tu página de inicio.</p>
+  <div class="container mx-auto p-4"></div>
+    <!-- Contenedor del Armador de Frases -->
+    <div id="sentence-builder" class="bg-white p-4 rounded shadow mb-4 sticky top-0">
+      <h2 class="text-lg font-bold mb-2">FRASE EN CONSTRUCCIÓN:</h2>
+      <div id="sentence" class="flex flex-wrap bg-gray-100 p-2 rounded min-h-[50px]"></div>
+      <div class="mt-2 flex justify-between">
+        <button id="clear-sentence" class="bg-red-500 text-white px-4 py-2 rounded">ELIMINAR FRASE</button>
+        <button id="confirm-sentence" class="bg-green-500 text-white px-4 py-2 rounded">CONFIRMAR</button>
+      </div>
     </div>
+
+    <!-- Páginas de Categorías -->
+    <div id="categories" class="grid grid-cols-3 gap-4">
+        <button data-category="Alimentacion" class="bg-red-600 text-white p-4 rounded">ALIMENTACIÓN</button>
+      <button data-category="Accioines_y_Rutinas" class="bg-yellow-500 text-white p-4 rounded">ACCIONES Y RUTINAS</button>
+      <button data-category="Lugares" class="bg-blue-700 text-white p-4 rounded">LUGARES</button>
+      <button data-category="Juguetes" class="bg-black text-white p-4 rounded">JUGUETES</button>
+      <button data-category="Animales" class="bg-blue-500 text-white p-4 rounded">ANIMALES</button>
+      <button data-category="Palabras_Funcionales" class="bg-green-600 text-white p-4 rounded">PALABRAS FUNCIONALES</button>
+      <button data-category="Emociones" class="bg-pink-500 text-white p-4 rounded">EMOCIONES</button>
+      <button data-category="Partes_del_Cuerpo" class="bg-yellow-800 text-white p-4 rounded">PARTES DEL CUERPO</button>
+      <button data-category="Colores" class="bg-purple-500 text-white p-4 rounded">COLORES</button>
+      <button data-category="Letras_y_Números" class="bg-purple-800 text-white p-4 rounded">LETRAS Y NÚMEROS</button>
+      <button data-category="Formas" class="bg-gray-500 text-white p-4 rounded">FORMAS</button>
+      <button data-category="Familiares_y_Amigos" class="bg-yellow-700 text-white p-4 rounded">FAMILIARES Y AMIGOS</button>
+    </div>
+
+    <!-- Contenedor de pictogramas de la categoría seleccionada -->
+    <div id="pictogram-container" class="grid grid-cols-8 gap-4 mt-4"></div> <!-- cols para cambiar el tamaño de las pictogramas -->
+
+    <!-- Resultado Final -->
+    <!-- Modal para mostrar la frase final -->
+    <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
+          <h2 class="text-xl font-bold mb-4">FRASE FINAL:</h2>
+          <p id="final-sentence" class="p-4 bg-gray-200 rounded"></p>
+          <div class="mt-4 flex justify-end">
+            <button id="close-modal" class="bg-red-500 text-white px-4 py-2 rounded">CERRAR</button>
+          </div>
+        </div>
   </div>
 
   <footer class="footer">
@@ -216,6 +254,7 @@
     integrity='sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy' crossorigin='anonymous'>
   </script>
   <script src="../src/script/main.js"></script>
+  <script src="../src/script/app.js"></script>
 
 </body>
 
