@@ -7,9 +7,9 @@
     <title>Apock Web Design</title>
     <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style type="text/css">
-        /* Estilos generales */
         html {
             -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
@@ -35,38 +35,41 @@
             left: 1rem;
             padding: 10px;
             border: none;
-            border-radius: 5px;
-            background-color: #005f73;
-            color: white;
+            background-color: transparent; /* Elimina el fondo */
+            color: white; /* Color del ícono */
             cursor: pointer;
             font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: auto; 
+            height: auto; 
         }
 
         .boton-volver i {
             font-size: 1.5rem;
+            transition: color 0.3s ease;
         }
 
         .boton-volver:hover {
-            background-color: #004552;
+            color: #ffb703; 
+            text-decoration: none; 
         }
+
 
         .seccion-perfil-usuario {
             display: flex;
             flex-wrap: wrap;
             flex-direction: column;
             align-items: center;
+            background-color: #005f73;
         }
 
         .perfil-usuario-header {
             width: 100%;
             display: flex;
             justify-content: center;
-            background: linear-gradient(#005f73, transparent);
+            background-color: #005f73;
             margin-bottom: 1.25rem;
         }
 
@@ -78,6 +81,11 @@
             background-color: #005f73;
             border-radius: 0 0 20px 20px;
             background-size: cover;
+        }
+
+        .perfil-usuario-body{
+            background-color: #005f73;
+            margin-bottom: 1.25rem;
         }
 
         .perfil-usuario-portada .boton-portada {
@@ -145,16 +153,16 @@
             font-size: 1.75em;
             margin-bottom: 0.5rem;
             color: #333;
-            text-align: center; /* Centra el título */
+            text-align: center; 
         }
 
         .perfil-usuario-body .texto {
             color: #666;
             font-size: 0.95em;
-            text-align: center; /* Centra la descripción */
+            text-align: center; 
         }
 
-        .perfil-usuario-footer,
+        .perfil-usuario-datos,
         .perfil-usuario-bio {
             display: flex;
             flex-wrap: wrap;
@@ -163,8 +171,9 @@
             background-color: #F9F9F9;
             border-radius: 15px;
             width: 100%;
-            flex-direction: column; /* Cambiado para permitir un mejor control del contenido */
-            align-items: center; /* Centra el contenido */
+            flex-direction: column; 
+            align-items: center; 
+            
         }
 
         .perfil-usuario-bio {
@@ -188,81 +197,11 @@
             color: #005f73;
         }
 
-        .redes-sociales {
-            position: absolute;
-            right: calc(0px - 50px - 1rem);
-            top: 0;
-            display: flex;
-            flex-direction: column;
+        .container-description {
+            margin-bottom: 5p;
         }
 
-        .redes-sociales .boton-redes {
-            border: 0;
-            background-color: #fff;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            color: #fff;
-            box-shadow: 0 0 12px rgba(0, 0, 0, .2);
-            font-size: 1.3rem;
-        }
-
-        .boton-redes.facebook {
-            background-color: #005f73;
-        }
-
-        .boton-redes.twitter {
-            background-color: #28A0B8;
-        }
-
-        .boton-redes.instagram {
-            background: linear-gradient(45deg, #FF2DFD, #40A7FF);
-        }
-
-        @media (max-width: 750px) {
-            .lista-datos {
-                width: 100%;
-            }
-
-            .perfil-usuario-portada,
-            .perfil-usuario-body {
-                width: 95%;
-            }
-
-            .redes-sociales {
-                position: relative;
-                flex-direction: row;
-                width: 100%;
-                left: 0;
-                text-align: center;
-                margin-top: 1rem;
-                margin-bottom: 1rem;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .redes-sociales .boton-redes + .boton-redes {
-                margin-left: 1rem;
-                margin-top: 0;
-            }
-        }
-
-        .mensaje a {
-            color: inherit;
-            margin-right: .5rem;
-            display: inline-block;
-        }
-
-        .mensaje a:hover {
-            color: #005f73;
-            transform: scale(1.4);
-        }
-
-        /* Estilos para el formulario de edición */
+        
         .formulario-edicion {
             display: none;
             flex-direction: column;
@@ -275,14 +214,39 @@
             max-width: 750px;
         }
 
-        .formulario-edicion input {
-            margin-bottom: 1rem;
-            padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .formulario-edicion {
+            display: none;
+            flex-direction: column;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, .1);
+            margin-top: 1rem;
+            width: 70%;
+            max-width: 750px;
+            margin-left: 20%; /* Ajuste para que se desplace hacia la derecha */
         }
 
         .boton-editar {
+            width: 45px; /* Hacemos el botón redondo */
+            height: 45px;
+            border: none;
+            border-radius: 50%; /* Bordes redondeados para que sea un círculo */
+            background-color: #005f73;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem; /* Tamaño del ícono */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .boton-editar:hover {
+            background-color: #004552;
+        }
+
+        .buttom-save-changes {
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
@@ -293,7 +257,7 @@
             margin-top: 10px;
         }
 
-        .boton-editar:hover {
+        .buttom-save-changes:hover {
             background-color: #004552;
         }
     </style>
@@ -301,10 +265,9 @@
 
 <body>
 
-    <button class="boton-volver" onclick="window.history.back();"><i class="fas fa-arrow-left"></i></button>
-
     <section class="seccion-perfil-usuario">
         <div class="perfil-usuario-header">
+            <button class="boton-volver" onclick="window.history.back();"><i class="fas fa-arrow-left"></i></button>
             <div class="perfil-usuario-portada" id="cover-photo" style="background-image: url('');">
                 <div class="perfil-usuario-avatar">
                     <img id="profile-pic" src="http://localhost/multimedia/relleno/img-c9.png" alt="img-avatar">
@@ -323,29 +286,27 @@
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
                 <h3 class="titulo" id="username"></h3>
-                <p class="texto" id="user-description"></p>
-                <button class="boton-editar" onclick="toggleEditForm()">Editar</button>
+                <div class="container-description">
+                    <p class="texto" id="user-description"></p>
+                </div>
+                <div class="perfil-usuario-datos">
+                    <ul class="lista-datos">
+                        <li><i class="icono fas fa-map-signs"></i> Dirección: Calle Falsa 123</li>
+                        <li><i class="icono fas fa-phone-alt"></i> Teléfono: 555-5555</li>
+                        <li><i class="icono fas fa-envelope"></i> Correo: contacto@apockweb.com</li>
+                    </ul>
+                </div>
+                <button class="boton-editar" onclick="toggleEditForm()">
+                    <i class="fas fa-pencil-alt"></i> 
+                </button>
             </div>
 
             <div class="formulario-edicion" id="edit-form">
                 <input type="text" id="new-username" placeholder="Nuevo nombre de usuario" />
                 <input type="text" id="new-text" placeholder="Nueva descripción" />
-                <button class="boton-editar" onclick="saveChanges()">Guardar cambios</button>
+                <button class="buttom-save-changes" onclick="saveChanges()">Guardar cambios</button>
             </div>
 
-            <div class="perfil-usuario-footer">
-                <ul class="lista-datos">
-                    <li><i class="icono fas fa-map-signs"></i> Dirección: Calle Falsa 123</li>
-                    <li><i class="icono fas fa-phone-alt"></i> Teléfono: 555-5555</li>
-                    <li><i class="icono fas fa-envelope"></i> Correo: contacto@apockweb.com</li>
-                </ul>
-                <ul class="lista-datos">
-                    <li><i class="icono fas fa-birthday-cake"></i> Fundado en: 2021</li>
-                    <li><i class="icono fas fa-users"></i> Clientes: Más de 200</li>
-                    <li><i class="icono fas fa-globe-americas"></i> Sitio Web: www.apockweb.com</li>
-                </ul>
-            </div>
-        </div>
     </section>
 
     <script>
