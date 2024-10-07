@@ -83,11 +83,6 @@
             background-size: cover;
         }
 
-        .perfil-usuario-body{
-            background-color: #005f73;
-            margin-bottom: 1.25rem;
-        }
-
         .perfil-usuario-portada .boton-portada {
             position: absolute;
             top: 1rem;
@@ -143,8 +138,11 @@
 
         .perfil-usuario-body {
             width: 70%;
-            position: relative;
+            height: 70vh;
             max-width: 750px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .perfil-usuario-body .titulo {
@@ -201,18 +199,6 @@
             margin-bottom: 5p;
         }
 
-        
-        .formulario-edicion {
-            display: none;
-            flex-direction: column;
-            padding: 1rem;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 0 12px rgba(0, 0, 0, .1);
-            margin-top: 1rem;
-            width: 70%;
-            max-width: 750px;
-        }
 
         .formulario-edicion {
             display: none;
@@ -221,10 +207,9 @@
             background-color: #f9f9f9;
             border-radius: 10px;
             box-shadow: 0 0 12px rgba(0, 0, 0, .1);
-            margin-top: 1rem;
             width: 70%;
             max-width: 750px;
-            margin-left: 20%; /* Ajuste para que se desplace hacia la derecha */
+            
         }
 
         .boton-editar {
@@ -291,7 +276,6 @@
                 </div>
                 <div class="perfil-usuario-datos">
                     <ul class="lista-datos">
-                        <li><i class="icono fas fa-map-signs"></i> Dirección: Calle Falsa 123</li>
                         <li><i class="icono fas fa-phone-alt"></i> Teléfono: 555-5555</li>
                         <li><i class="icono fas fa-envelope"></i> Correo: contacto@apockweb.com</li>
                     </ul>
@@ -320,7 +304,6 @@
         const newUsernameInput = document.getElementById('new-username');
         const newTextInput = document.getElementById('new-text');
 
-        // Load saved data on page load
         window.addEventListener('load', () => {
             const savedImage = localStorage.getItem('profileImage');
             if (savedImage) {
