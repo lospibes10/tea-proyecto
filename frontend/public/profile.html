@@ -8,244 +8,7 @@
     <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <style type="text/css">
-        html {
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-            text-size-adjust: 100%;
-            line-height: 1.4;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #FFFFFF;
-            color: #333;
-            font-family: "Arial", Segoe UI, Tahoma, sans-serif, Helvetica Neue, Helvetica;
-        }
-
-        .boton-volver {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            padding: 10px;
-            border: none;
-            background-color: transparent; /* Elimina el fondo */
-            color: white; /* Color del ícono */
-            cursor: pointer;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: auto; 
-            height: auto; 
-        }
-
-        .boton-volver i {
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .boton-volver:hover {
-            color: #ffb703; 
-            text-decoration: none; 
-        }
-
-
-        .seccion-perfil-usuario {
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            align-items: center;
-            background-color: #005f73;
-        }
-
-        .perfil-usuario-header {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            background-color: #005f73;
-            margin-bottom: 1.25rem;
-        }
-
-        .perfil-usuario-portada {
-            display: block;
-            position: relative;
-            width: 90%;
-            height: 17rem;
-            background-color: #005f73;
-            border-radius: 0 0 20px 20px;
-            background-size: cover;
-        }
-
-        .perfil-usuario-portada .boton-portada {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            border: 0;
-            border-radius: 8px;
-            padding: 12px 25px;
-            background-color: rgba(0, 0, 0, .5);
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .perfil-usuario-avatar {
-            display: flex;
-            width: 180px;
-            height: 180px;
-            align-items: center;
-            justify-content: center;
-            border: 7px solid #FFFFFF;
-            background-color: #DFE5F2;
-            border-radius: 50%;
-            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-            position: absolute;
-            bottom: -40px;
-            left: calc(50% - 90px);
-            z-index: 1;
-        }
-
-        .perfil-usuario-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 50%;
-        }
-
-        .perfil-usuario-avatar .boton-avatar {
-            position: absolute;
-            left: -2px;
-            top: -2px;
-            border: 0;
-            background-color: #005f73;
-            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .perfil-usuario-avatar .boton-avatar i {
-            color: #fff;
-        }
-
-        .perfil-usuario-body {
-            width: 70%;
-            height: 70vh;
-            max-width: 750px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .perfil-usuario-body .titulo {
-            display: block;
-            width: 100%;
-            font-size: 1.75em;
-            margin-bottom: 0.5rem;
-            color: #333;
-            text-align: center; 
-        }
-
-        .perfil-usuario-body .texto {
-            color: #666;
-            font-size: 0.95em;
-            text-align: center; 
-        }
-
-        .perfil-usuario-datos,
-        .perfil-usuario-bio {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 1.5rem 2rem;
-            box-shadow: 0 0 12px rgba(0, 0, 0, .1);
-            background-color: #F9F9F9;
-            border-radius: 15px;
-            width: 100%;
-            flex-direction: column; 
-            align-items: center; 
-            
-        }
-
-        .perfil-usuario-bio {
-            margin-bottom: 1.25rem;
-            text-align: center;
-        }
-
-        .lista-datos {
-            width: 50%;
-            list-style: none;
-        }
-
-        .lista-datos li {
-            padding: 5px 0;
-        }
-
-        .lista-datos li > .icono {
-            margin-right: 1rem;
-            font-size: 1.2rem;
-            vertical-align: middle;
-            color: #005f73;
-        }
-
-        .container-description {
-            margin-bottom: 5p;
-        }
-
-
-        .formulario-edicion {
-            display: none;
-            flex-direction: column;
-            padding: 1rem;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 0 12px rgba(0, 0, 0, .1);
-            width: 70%;
-            max-width: 750px;
-            
-        }
-
-        .boton-editar {
-            width: 45px; /* Hacemos el botón redondo */
-            height: 45px;
-            border: none;
-            border-radius: 50%; /* Bordes redondeados para que sea un círculo */
-            background-color: #005f73;
-            color: white;
-            cursor: pointer;
-            font-size: 1rem; /* Tamaño del ícono */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .boton-editar:hover {
-            background-color: #004552;
-        }
-
-        .buttom-save-changes {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #005f73;
-            color: white;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-top: 10px;
-        }
-
-        .buttom-save-changes:hover {
-            background-color: #004552;
-        }
-    </style>
+    <link rel="stylesheet" href="../src/styles/profle.css">
 </head>
 
 <body>
@@ -262,7 +25,7 @@
                     </button>
                 </div>
                 <button type="button" class="boton-portada" onclick="document.getElementById('file-input-cover').click();">
-                    <i class="far fa-image"></i> Cambiar portada
+                    <i class="far fa-image"></i>
                 </button>
                 <input type="file" id="file-input-cover" accept="image/*" style="display: none;">
             </div>
@@ -285,11 +48,25 @@
                 </button>
             </div>
 
-            <div class="formulario-edicion" id="edit-form">
-                <input type="text" id="new-username" placeholder="Nuevo nombre de usuario" />
-                <input type="text" id="new-text" placeholder="Nueva descripción" />
-                <button class="buttom-save-changes" onclick="saveChanges()">Guardar cambios</button>
-            </div>
+        <div id="edit-form-container" class="hidden">
+            <h3>Editar Información</h3>
+            <form action="/submit" method="POST">
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" id="nombre" name="nombre" required><br><br>
+
+                <label for="descripcion">Descripción:</label><br>
+                <textarea id="descripcion" name="descripcion" rows="4" cols="50" required></textarea><br><br>
+
+                <label for="telefono">Teléfono:</label><br>
+                <input type="tel" id="telefono" name="telefono" required><br><br>
+
+                <label for="email">Correo Electrónico:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <button class="buttom-save-changes" type="button" onclick="updateProfile()">Guardar</button>
+            </form>
+        </div>
+
 
     </section>
 
@@ -298,11 +75,6 @@
         const fileInputCover = document.getElementById('file-input-cover');
         const profilePic = document.getElementById('profile-pic');
         const coverPhoto = document.getElementById('cover-photo');
-        const editForm = document.getElementById('edit-form');
-        const usernameElement = document.getElementById('username');
-        const descriptionElement = document.getElementById('user-description');
-        const newUsernameInput = document.getElementById('new-username');
-        const newTextInput = document.getElementById('new-text');
 
         window.addEventListener('load', () => {
             const savedImage = localStorage.getItem('profileImage');
@@ -350,26 +122,33 @@
             }
         });
 
-        function toggleEditForm() {
-            editForm.style.display = editForm.style.display === 'none' || editForm.style.display === '' ? 'flex' : 'none';
-            newUsernameInput.value = usernameElement.innerText;
-            newTextInput.value = descriptionElement.innerText;
+         // Función para alternar la visibilidad del formulario
+         function toggleEditForm() {
+            const formContainer = document.getElementById('edit-form-container');
+            formContainer.classList.toggle('hidden');
+
+            // Precargar datos actuales en el formulario
+            document.getElementById('nombre').value = document.getElementById('username').textContent;
+            document.getElementById('descripcion').value = document.getElementById('user-description').textContent;
+            document.getElementById('telefono').value = document.getElementById('user-phone').textContent;
+            document.getElementById('email').value = document.getElementById('user-email').textContent;
         }
 
-        function saveChanges() {
-            const newUsername = newUsernameInput.value.trim();
-            const newText = newTextInput.value.trim();
+        // Función para actualizar el perfil con los datos del formulario
+        function updateProfile() {
+            // Obtener los valores del formulario
+            const nombre = document.getElementById('nombre').value;
+            const descripcion = document.getElementById('descripcion').value;
+            const telefono = document.getElementById('telefono').value;
+            const email = document.getElementById('email').value;
 
-            if (newUsername) {
-                usernameElement.innerText = newUsername;
-                localStorage.setItem('username', newUsername);
-            }
+            // Actualizar el contenido del perfil
+            document.getElementById('username').textContent = nombre;
+            document.getElementById('user-description').textContent = descripcion;
+            document.getElementById('user-phone').textContent = telefono;
+            document.getElementById('user-email').textContent = email;
 
-            if (newText) {
-                descriptionElement.innerText = newText;
-                localStorage.setItem('userDescription', newText);
-            }
-
+            // Ocultar el formulario después de guardar los cambios
             toggleEditForm();
         }
     </script>
