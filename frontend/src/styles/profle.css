@@ -1,7 +1,19 @@
 body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     background-color: #FFFFFF;
     color: #333;
     font-family: "Arial", Segoe UI, Tahoma, sans-serif, Helvetica Neue, Helvetica;
+}
+
+.seccion-perfil-usuario {
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    background-color: #005f73;
 }
 
 .boton-volver {
@@ -29,15 +41,6 @@ body {
 .boton-volver:hover {
     color: #ffb703; 
     text-decoration: none; 
-}
-
-
-.seccion-perfil-usuario {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    background-color: #005f73;
 }
 
 .perfil-usuario-header {
@@ -135,11 +138,12 @@ body {
 
 .perfil-usuario-body {
     width: 70%;
-    height: 80vh;
+    height: auto; /* Asegura que se ajuste al contenido */
     max-width: 750px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 0; /* Evita espacio adicional al final */
 }
 
 .perfil-usuario-body .titulo {
@@ -166,7 +170,9 @@ body {
     border-radius: 15px;
     width: 100%;
     flex-direction: column; 
-    align-items: center;  
+    align-items: center;
+    margin-bottom: 1.25rem;
+    text-align: center;
 }
 
 .perfil-usuario-datos{
@@ -179,11 +185,6 @@ body {
     flex-direction: column;
     justify-content: center; 
     align-items: center;
-}
-
-.perfil-usuario-bio {
-    margin-bottom: 1.25rem;
-    text-align: center;
 }
 
 .lista-datos {
@@ -207,23 +208,12 @@ body {
 }
 
 
-.formulario-edicion {
-    display: none;
-    flex-direction: column;
-    padding: 1rem;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 12px rgba(0, 0, 0, .1);
-    width: 70%;
-    max-width: 750px;
-    
-}
-
 .boton-editar:hover {
     background-color: #004552;
 }
 
 .buttom-save-changes {
+    display: flex;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -240,11 +230,13 @@ body {
 
 
 #edit-form-container {
-    margin-top: 20px;
     background-color: #f9f9f9;
     padding: 20px;
+    padding-right: 40px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-height: auto;
+    margin-bottom: 20px;
 }
 
 form label {
