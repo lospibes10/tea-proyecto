@@ -1,257 +1,340 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: #f8f9fa;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Page</title>
-  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'
-    integrity='sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH' crossorigin='anonymous'>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-  crossorigin="anonymous"
-/>
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-  rel="stylesheet"
-/>
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      background-color: #f8f9fa;
-    }
+      .main-content {
+        flex: 1;
+        padding: 2rem 0;
+      }
 
-    .main-content {
-      flex: 1;
-      padding: 2rem 0;
-    }
+      .navbar {
+        background-color: #005f73;
+        padding: 1rem;
+      }
 
-    .navbar {
-      background-color: #005f73;
-      padding: 1rem;
-    }
+      .navbar-brand img {
+        width: 50px;
+        height: 50px;
+      }
 
-    .navbar-brand img {
-      width: 50px;
-      height: 50px;
-    }
+      .nav-link,
+      .nav-icon {
+        color: white !important;
+        font-size: 1.1rem;
+        font-weight: bold;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
 
-    .nav-link,
-    .nav-icon {
-      color: white !important;
-      font-size: 1.1rem;
-      font-weight: bold;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
+      .nav-link:hover,
+      .nav-icon:hover {
+        color: #ffb703 !important;
+        transform: scale(1.05);
+      }
 
-    .nav-link:hover,
-    .nav-icon:hover {
-      color: #ffb703 !important;
-      transform: scale(1.05);
-    }
+      .nav-icon {
+        font-size: 2rem;
+      }
 
-    .nav-icon {
-      font-size: 2rem;
-    }
+      .btn-custom {
+        background-color: #023e8a;
+        border-color: #023e8a;
+        color: white;
+        font-family: "Arial", sans-serif;
+        transition: background-color 0.3s ease, border-color 0.3s ease,
+          transform 0.3s ease;
+      }
 
-    .btn-custom {
-      background-color: #023e8a;
-      border-color: #023e8a;
-      color: white;
-      font-family: 'Arial', sans-serif;
-      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-    }
+      .btn-custom:hover {
+        background-color: #0077b6 !important;
+        border-color: #0077b6 !important;
+        transform: translateY(-2px);
+      }
 
-    .btn-custom:hover {
-      background-color: #0077b6 !important;
-      border-color: #0077b6 !important;
-      transform: translateY(-2px);
-    }
+      .main-content {
+        flex: 1;
+        padding: 0; /* Eliminar el padding para que la imagen ocupe todo el espacio */
+        position: relative; /* Para posicionar el texto sobre la imagen */
+      }
 
-    .main-content {
-      flex: 1;
-      padding: 0; /* Eliminar el padding para que la imagen ocupe todo el espacio */
-      position: relative; /* Para posicionar el texto sobre la imagen */
-    }
+      .main-image-container {
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* Para asegurar que la imagen no se salga del contenedor */
+      }
 
-    .main-image-container {
-      width: 100%;
-      height: 100%;
-      overflow: hidden; /* Para asegurar que la imagen no se salga del contenedor */
-    }
+      .main-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Esto asegura que la imagen cubra todo el contenedor sin distorsionarse */
+        object-position: center; /* Centra la imagen */
+      }
 
-    .main-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Esto asegura que la imagen cubra todo el contenedor sin distorsionarse */
-      object-position: center; /* Centra la imagen */
-    }
+      .main-content-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white; /* Cambia el color del texto para que sea visible sobre la imagen */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Añade sombra al texto para mejorar la legibilidad */
+        width: 80%; /* Ajusta según sea necesario */
+      }
 
-    .main-content-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: white; /* Cambia el color del texto para que sea visible sobre la imagen */
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Añade sombra al texto para mejorar la legibilidad */
-      width: 80%; /* Ajusta según sea necesario */
-    }
+      .main-content-text h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
 
-    .main-content-text h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
+      .main-content-text p {
+        font-size: 1.2rem;
+      }
 
-    .main-content-text p {
-      font-size: 1.2rem;
-    }
+      .logo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
 
+      .logo-img {
+        height: 6rem;
+        width: auto;
+      }
 
+      .link {
+        font-size: 0.9rem;
+        color: #f8f9fa;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
+      .link:hover {
+        color: #ffb703;
+        text-decoration: underline;
+      }
 
-    .logo-img {
-      height: 6rem;
-      width: auto;
-    }
+      .divider {
+        margin: 1.5rem 0;
+        border: 1px solid #495057;
+      }
+    </style>
+  </head>
 
-
-    .link {
-      font-size: 0.9rem;
-      color: #f8f9fa;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .link:hover {
-      color: #ffb703;
-      text-decoration: underline;
-    }
-
-    .divider {
-      margin: 1.5rem 0;
-      border: 1px solid #495057;
-    }
-
-  </style>
-</head>
-
-<body>
-
-  <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img src="../src/img/TEA-removebg-preview.png" width="50" height="50" alt="Logo">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link d-flex align-items-center" href="blog.html">
-              <i class="bi bi-pencil-square me-2" style="font-size: 2rem;"></i>
-              <span>Crear Frase</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">
-              <i class="bi bi-chat-dots nav-icon"></i>
-            </a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ms-auto d-flex align-items-center">
-          <li class="nav-item d-flex align-items-center me-3"> <!-- Ajuste de margen aquí -->
-            <a href="profile.html" class="nav-link">
-              <i class="bi bi-person-circle nav-icon"></i>
-            </a>
-          </li>
-          <li class="nav-item d-flex align-items-center me-3"> <!-- Aumentar margen derecho -->
-            <a id="logout" href="#" title="Cerrar Sesión" class="nav-link">
-              <i class="bi bi-box-arrow-right nav-icon"></i>
-            </a>
-          </li> 
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div class="main-content"></div>
-    <div class="container">
-      <img src="../src/img/Diseno_sin_titulo1.png" alt="Imagen principal" class="main-image">
-    </div>
-  </div>
-
-  <footer class="bg-black rounded-lg shadow dark:bg-gray-900 m-4">
-    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-      <div class="sm:flex sm:items-center sm:justify-between">
-        <a
-          href="https://flowbite.com/"
-          class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
-        >
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
           <img
-            src="/src/img/TEA-removebg-preview.png"
-            class="h-20"
-            alt="Flowbite Logo"
+            src="../src/img/TEA-removebg-preview.png"
+            width="50"
+            height="50"
+            alt="Logo"
           />
-          <span
-            class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-            >TEA</span
-          >
         </a>
-        <ul
-          class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400"
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-          <li>
-            <a href="#" class="hover:underline me-4 md:me-6">About</a>
-          </li>
-          <li>
-            <a href="#" class="hover:underline me-4 md:me-6"
-              >Privacy Policy</a
-            >
-          </li>
-          <li>
-            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-          </li>
-          <li>
-            <a href="#" class="hover:underline">Contact</a>
-          </li>
-        </ul>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center" href="blog.html">
+                <i class="bi bi-pencil-square me-2" style="font-size: 2rem"></i>
+                <span>Crear Frase</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">
+                <i class="bi bi-chat-dots nav-icon"></i>
+              </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto d-flex align-items-center">
+            <li class="nav-item d-flex align-items-center me-3">
+              <!-- Ajuste de margen aquí -->
+              <a href="profile.html" class="nav-link">
+                <i class="bi bi-person-circle nav-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item d-flex align-items-center me-3">
+              <!-- Aumentar margen derecho -->
+              <a id="logout" href="#" title="Cerrar Sesión" class="nav-link">
+                <i class="bi bi-box-arrow-right nav-icon"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <hr
-        class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
-      />
-      <span
-        class="block text-sm text-gray-500 sm:text-center dark:text-gray-400"
-        >© 2023 <a href="youtube.com" class="hover:underline">TEA™</a>. All
-        Rights Reserved.</span
+    </nav>
+
+    <div class="bg-white">
+      <!-- Carrusel -->
+      <div
+        class="relative w-full mx-auto overflow-hidden max-w-4xl rounded-lg shadow-lg"
       >
+        <div
+          class="flex transition-transform duration-500 ease-in-out"
+          id="carousel"
+        >
+          <img src="/src/img/autismo.jpg" alt="Imagen 1" class="w-full" />
+          <img
+            src="/src/img/nin_CC_83o_20con_20autismo.jpg"
+            alt="Imagen 2"
+            class="w-full"
+          />
+          <img
+            src="/src/img/test de autismo.jpg"
+            alt="Imagen 3"
+            class="w-full"
+          />
+        </div>
+
+        <!-- Botones de control -->
+        <button
+          id="prev"
+          class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-md hover:bg-gray-600"
+        >
+          &#10094;
+        </button>
+        <button
+          id="next"
+          class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-md hover:bg-gray-600"
+        >
+          &#10095;
+        </button>
+      </div>
+
+      <!-- Información del proyecto -->
+      <div class="max-w-4xl mx-auto py-8 px-4">
+        <h2 class="text-2xl font-semibold text-center text-gray-800">
+          Nuestro Proyecto
+        </h2>
+        <p class="text-center text-gray-600 mt-4">
+          Este proyecto está dedicado a ayudar a niños con Trastorno del
+          Espectro Autista (TEA) a comunicarse de una manera más efectiva con
+          sus padres. A través de pictogramas y herramientas visuales, buscamos
+          facilitar la interacción diaria, promoviendo la inclusión y el
+          desarrollo.
+        </p>
+      </div>
     </div>
-  </footer>
 
-  <script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js'
-    integrity='sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r' crossorigin='anonymous'>
-  </script>
-  <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js'
-    integrity='sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy' crossorigin='anonymous'>
-  </script>
-  <script src="../src/script/main.js"></script>
-  
-</body>
+    <footer class="bg-black rounded-lg shadow dark:bg-gray-900 m-4">
+      <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+          <a
+            href="https://flowbite.com/"
+            class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
+          >
+            <img
+              src="/src/img/TEA-removebg-preview.png"
+              class="h-20"
+              alt="Flowbite Logo"
+            />
+            <span
+              class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+              >TEA</span
+            >
+          </a>
+          <ul
+            class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400"
+          >
+            <li>
+              <a href="#" class="hover:underline me-4 md:me-6">About</a>
+            </li>
+            <li>
+              <a href="#" class="hover:underline me-4 md:me-6"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+            </li>
+            <li>
+              <a href="#" class="hover:underline">Contact</a>
+            </li>
+          </ul>
+        </div>
+        <hr
+          class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
+        />
+        <span
+          class="block text-sm text-gray-500 sm:text-center dark:text-gray-400"
+          >© 2023 <a href="youtube.com" class="hover:underline">TEA™</a>. All
+          Rights Reserved.</span
+        >
+      </div>
+    </footer>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../src/script/main.js"></script>
+    <script>
+      const carousel = document.getElementById("carousel");
+      const prev = document.getElementById("prev");
+      const next = document.getElementById("next");
+
+      let currentIndex = 0;
+
+      prev.addEventListener("click", () => {
+        currentIndex =
+          currentIndex === 0 ? carousel.children.length - 1 : currentIndex - 1;
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+      });
+
+      next.addEventListener("click", () => {
+        currentIndex =
+          currentIndex === carousel.children.length - 1 ? 0 : currentIndex + 1;
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+      });
+    </script>
+  </body>
 </html>
