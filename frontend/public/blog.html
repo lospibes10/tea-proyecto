@@ -1,262 +1,347 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creador de Frases con Pictogramas</title>
+    <script src="../src/script/app.js" defer></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creador de Frases con Pictogramas</title>
-  <script src="../src/script/app.js" defer></script>
-  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'
-    integrity='sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH' crossorigin='anonymous'>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-  <style>
-    /* body {
+    <style>
+      /* body {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       background-color: #f8f9fa;
     } */
 
-    .main-content {
-      flex: 1;
-      padding: 2rem 0;
-    }
+      .main-content {
+        flex: 1;
+        padding: 2rem 0;
+      }
 
-    .navbar {
-      background-color: #005f73;
-      padding: 1rem;
-    }
+      .navbar {
+        background-color: #005f73;
+        padding: 1rem;
+      }
 
-    .navbar-brand img {
-      width: 50px;
-      height: 50px;
-    }
+      .navbar-brand img {
+        width: 50px;
+        height: 50px;
+      }
 
-    .nav-link,
-    .nav-icon {
-      color: white !important;
-      font-size: 1.1rem;
-      font-weight: bold;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
+      .nav-link,
+      .nav-icon {
+        color: white !important;
+        font-size: 1.1rem;
+        font-weight: bold;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
 
-    .nav-link:hover,
-    .nav-icon:hover {
-      color: #ffb703 !important;
-      transform: scale(1.05);
-    }
+      .nav-link:hover,
+      .nav-icon:hover {
+        color: #ffb703 !important;
+        transform: scale(1.05);
+      }
 
-    .nav-icon {
-      font-size: 2rem;
-    }
+      .nav-icon {
+        font-size: 2rem;
+      }
 
-    .btn-custom {
-      background-color: #023e8a;
-      border-color: #023e8a;
-      color: white;
-      font-family: 'Arial', sans-serif;
-      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-    }
+      .btn-custom {
+        background-color: #023e8a;
+        border-color: #023e8a;
+        color: white;
+        font-family: "Arial", sans-serif;
+        transition: background-color 0.3s ease, border-color 0.3s ease,
+          transform 0.3s ease;
+      }
 
-    .btn-custom:hover {
-      background-color: #0077b6 !important;
-      border-color: #0077b6 !important;
-      transform: translateY(-2px);
-    }
+      .btn-custom:hover {
+        background-color: #0077b6 !important;
+        border-color: #0077b6 !important;
+        transform: translateY(-2px);
+      }
 
-    .footer {
-      background-color: #343a40;
-      color: white;
-      border-radius: 0.5rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      margin: 1rem;
-      padding: 1.5rem;
-    }
+      .logo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
 
-    .container-footer {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+      .logo-img {
+        height: 6rem;
+        width: auto;
+      }
 
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+      .link {
+        font-size: 0.9rem;
+        color: #f8f9fa;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
+      .link:hover {
+        color: #ffb703;
+        text-decoration: underline;
+      }
 
-    .logo-img {
-      height: 6rem;
-      width: auto;
-    }
+      .divider {
+        margin: 1.5rem 0;
+        border: 1px solid #495057;
+      }
+    </style>
+  </head>
 
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-links li {
-      margin-right: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .link {
-      font-size: 0.9rem;
-      color: #f8f9fa;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .link:hover {
-      color: #ffb703;
-      text-decoration: underline;
-    }
-
-    .divider {
-      margin: 1.5rem 0;
-      border: 1px solid #495057;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      font-size: 0.875rem;
-      color: #f8f9fa;
-    }
-
-    .footer-link {
-      color: #f8f9fa;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .footer-link:hover {
-      color: #ffb703;
-      text-decoration: underline;
-    }
-  </style>
-</head>
-
-<body class="bg-gray-100">
-
-  <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img src="../src/img/TEA-removebg-preview.png" width="50" height="50" alt="Logo">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="home.html">
-              <i class="bi bi-house nav-icon"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">
-              <i class="bi bi-chat-dots nav-icon"></i>
-            </a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ms-auto d-flex align-items-center">
-          <li class="nav-item d-flex align-items-center me-3">
-            <a href="profile.html" class="nav-link">
-              <i class="bi bi-person-circle nav-icon"></i>
-            </a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a id="logout" href="#" title="Cerrar Sesión" class="nav-link me-3"> <!-- Aumenta el margen derecho -->
-              <i class="bi bi-box-arrow-right nav-icon"></i>
-            </a>
-          </li>
-        </ul>
+  <body class="bg-gray-100">
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="../src/img/TEA-removebg-preview.png"
+            width="50"
+            height="50"
+            alt="Logo"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="home.html">
+                <i class="bi bi-house nav-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">
+                <i class="bi bi-chat-dots nav-icon"></i>
+              </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto d-flex align-items-center">
+            <li class="nav-item d-flex align-items-center me-3">
+              <a href="profile.html" class="nav-link">
+                <i class="bi bi-person-circle nav-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <a
+                id="logout"
+                href="#"
+                title="Cerrar Sesión"
+                class="nav-link me-3"
+              >
+                <!-- Aumenta el margen derecho -->
+                <i class="bi bi-box-arrow-right nav-icon"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <div class="container mx-auto p-4"></div>
+    <div class="container mx-auto p-4"></div>
     <!-- Contenedor del Armador de Frases -->
-    <div id="sentence-builder" class="bg-white p-4 rounded shadow mb-4 sticky top-0">
+    <div
+      id="sentence-builder"
+      class="bg-white p-4 rounded shadow mb-4 sticky top-0"
+    >
       <h2 class="text-lg font-bold mb-2">FRASE EN CONSTRUCCIÓN:</h2>
-      <div id="sentence" class="flex flex-wrap bg-gray-100 p-2 rounded min-h-[50px]"></div>
+      <div
+        id="sentence"
+        class="flex flex-wrap bg-gray-100 p-2 rounded min-h-[50px]"
+      ></div>
       <div class="mt-2 flex justify-between">
-        <button id="clear-sentence" class="bg-red-500 text-white px-4 py-2 rounded">ELIMINAR FRASE</button>
-        <button id="confirm-sentence" class="bg-green-500 text-white px-4 py-2 rounded">CONFIRMAR</button>
+        <button
+          id="clear-sentence"
+          class="bg-red-500 text-white px-4 py-2 rounded"
+        >
+          ELIMINAR FRASE
+        </button>
+        <button
+          id="confirm-sentence"
+          class="bg-green-500 text-white px-4 py-2 rounded"
+        >
+          CONFIRMAR
+        </button>
       </div>
     </div>
 
     <!-- Páginas de Categorías -->
     <div id="categories" class="grid grid-cols-3 gap-4">
-        <button data-category="Alimentacion" class="bg-red-600 text-white p-4 rounded">ALIMENTACIÓN</button>
-      <button data-category="Accioines_y_Rutinas" class="bg-yellow-500 text-white p-4 rounded">ACCIONES Y RUTINAS</button>
-      <button data-category="Lugares" class="bg-blue-700 text-white p-4 rounded">LUGARES</button>
-      <button data-category="Juguetes" class="bg-black text-white p-4 rounded">JUGUETES</button>
-      <button data-category="Animales" class="bg-blue-500 text-white p-4 rounded">ANIMALES</button>
-      <button data-category="Palabras_Funcionales" class="bg-green-600 text-white p-4 rounded">PALABRAS FUNCIONALES</button>
-      <button data-category="Emociones" class="bg-pink-500 text-white p-4 rounded">EMOCIONES</button>
-      <button data-category="Partes_del_Cuerpo" class="bg-yellow-800 text-white p-4 rounded">PARTES DEL CUERPO</button>
-      <button data-category="Colores" class="bg-purple-500 text-white p-4 rounded">COLORES</button>
-      <button data-category="Letras_y_Números" class="bg-purple-800 text-white p-4 rounded">LETRAS Y NÚMEROS</button>
-      <button data-category="Formas" class="bg-gray-500 text-white p-4 rounded">FORMAS</button>
-      <button data-category="Familiares_y_Amigos" class="bg-yellow-700 text-white p-4 rounded">FAMILIARES Y AMIGOS</button>
+      <button
+        data-category="Alimentacion"
+        class="bg-red-600 text-white p-4 rounded"
+      >
+        ALIMENTACIÓN
+      </button>
+      <button
+        data-category="Accioines_y_Rutinas"
+        class="bg-yellow-500 text-white p-4 rounded"
+      >
+        ACCIONES Y RUTINAS
+      </button>
+      <button
+        data-category="Lugares"
+        class="bg-blue-700 text-white p-4 rounded"
+      >
+        LUGARES
+      </button>
+      <button data-category="Juguetes" class="bg-black text-white p-4 rounded">
+        JUGUETES
+      </button>
+      <button
+        data-category="Animales"
+        class="bg-blue-500 text-white p-4 rounded"
+      >
+        ANIMALES
+      </button>
+      <button
+        data-category="Palabras_Funcionales"
+        class="bg-green-600 text-white p-4 rounded"
+      >
+        PALABRAS FUNCIONALES
+      </button>
+      <button
+        data-category="Emociones"
+        class="bg-pink-500 text-white p-4 rounded"
+      >
+        EMOCIONES
+      </button>
+      <button
+        data-category="Partes_del_Cuerpo"
+        class="bg-yellow-800 text-white p-4 rounded"
+      >
+        PARTES DEL CUERPO
+      </button>
+      <button
+        data-category="Colores"
+        class="bg-purple-500 text-white p-4 rounded"
+      >
+        COLORES
+      </button>
+      <button
+        data-category="Letras_y_Números"
+        class="bg-purple-800 text-white p-4 rounded"
+      >
+        LETRAS Y NÚMEROS
+      </button>
+      <button data-category="Formas" class="bg-gray-500 text-white p-4 rounded">
+        FORMAS
+      </button>
+      <button
+        data-category="Familiares_y_Amigos"
+        class="bg-yellow-700 text-white p-4 rounded"
+      >
+        FAMILIARES Y AMIGOS
+      </button>
     </div>
 
     <!-- Contenedor de pictogramas de la categoría seleccionada -->
-    <div id="pictogram-container" class="grid grid-cols-8 gap-4 mt-4"></div> <!-- cols para cambiar el tamaño de las pictogramas -->
+    <div id="pictogram-container" class="grid grid-cols-8 gap-4 mt-4"></div>
+    <!-- cols para cambiar el tamaño de las pictogramas -->
 
     <!-- Resultado Final -->
     <!-- Modal para mostrar la frase final -->
-    <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
-        <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
-          <h2 class="text-xl font-bold mb-4">FRASE FINAL:</h2>
-          <p id="final-sentence" class="p-4 bg-gray-200 rounded"></p>
-          <div class="mt-4 flex justify-end">
-            <button id="close-modal" class="bg-red-500 text-white px-4 py-2 rounded">CERRAR</button>
-          </div>
+    <div
+      id="modal"
+      class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
+        <h2 class="text-xl font-bold mb-4">FRASE FINAL:</h2>
+        <p id="final-sentence" class="p-4 bg-gray-200 rounded"></p>
+        <div class="mt-4 flex justify-end">
+          <button
+            id="close-modal"
+            class="bg-red-500 text-white px-4 py-2 rounded"
+          >
+            CERRAR
+          </button>
         </div>
-  </div>
-
-  <footer class="footer">
-    <div class="container-footer">
-      <div class="footer-content">
-        <div class="logo">
-          <img src="../src/img/TEA-removebg-preview.png" class="logo-img" alt="TEA" />
-        </div>
-        <ul class="footer-links">
-          <li><a href="#" class="link">About</a></li>
-          <li><a href="#" class="link">Privacy Policy</a></li>
-          <li><a href="#" class="link">Licensing</a></li>
-          <li><a href="#" class="link">Contact</a></li>
-        </ul>
       </div>
-      <hr class="divider" />
-      <span class="footer-bottom">© 2024 <a href="#" class="footer-link">Tea</a>. All Rights Reserved.</span>
     </div>
-  </footer>
 
-  <script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js'
-    integrity='sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r' crossorigin='anonymous'>
-  </script>
-  <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js'
-    integrity='sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy' crossorigin='anonymous'>
-  </script>
-  <script src="../src/script/main.js"></script>
-  <script src="../src/script/app.js"></script>
+    <footer class="bg-black rounded-lg shadow dark:bg-gray-900 m-4">
+      <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+          <a
+            href="https://flowbite.com/"
+            class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
+          >
+            <img
+              src="/src/img/TEA-removebg-preview.png"
+              class="h-20"
+              alt="Flowbite Logo"
+            />
+            <span
+              class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+              >TEA</span
+            >
+          </a>
+          <ul
+            class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400"
+          >
+            <li>
+              <a href="#" class="hover:underline me-4 md:me-6">About</a>
+            </li>
+            <li>
+              <a href="#" class="hover:underline me-4 md:me-6"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+            </li>
+            <li>
+              <a href="#" class="hover:underline">Contact</a>
+            </li>
+          </ul>
+        </div>
+        <hr
+          class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
+        />
+        <span
+          class="block text-sm text-gray-500 sm:text-center dark:text-gray-400"
+          >© 2023 <a href="youtube.com" class="hover:underline">TEA™</a>. All
+          Rights Reserved.</span
+        >
+      </div>
+    </footer>
 
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../src/script/main.js"></script>
+    <script src="../src/script/app.js"></script>
+  </body>
 </html>
-
