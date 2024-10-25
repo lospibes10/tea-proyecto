@@ -2,7 +2,7 @@ export const valoresBD={
     DB_HOST: 'localhost',
     DB_USER: 'root',
     DB_PASSWORD: '',
-    DB_NAME: 'db_system'
+    DB_NAME: 'tea_proyecto'
 }
 
 export const PORT = 4000
