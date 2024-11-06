@@ -1,84 +1,122 @@
-// Variables para los elementos de la imagen de perfil y portada
-const fileInputAvatar = document.getElementById('file-input-avatar');
-const fileInputCover = document.getElementById('file-input-cover');
+// Función para obtener el token de las cookies
+function getTokenFromCookies() {
+    const cookies = document.cookie.split("; ");
+    const tokenCookie = cookies.find(cookie => cookie.startsWith("authToken="));
+    return tokenCookie ? tokenCookie.split("=")[1] : null;
+}
+
+// Función para decodificar el payload de un JWT
+function decodeTokenPayload(token) {
+    if (!token) return null;
+
+    const payloadBase64 = token.split(".")[1]; // Extrae la segunda parte
+    const payloadJson = atob(payloadBase64); // Decodifica de Base64 a string
+    return JSON.parse(payloadJson); // Convierte el string a objeto JSON
+}
+
+// Uso
+const token = getTokenFromCookies();
+const payload = decodeTokenPayload(token);
+
+console.log(payload); // Aquí tienes el contenido decodificado del payload
+
+const userId = payload ? payload.userId : null;
+if (!userId) {
+    console.error("No se pudo obtener el ID del usuario desde el token");
+}
+
+// Elementos de HTML
+const profilePicInput = document.getElementById('file-input-avatar');
+const coverPhotoInput = document.getElementById('file-input-cover');
 const profilePic = document.getElementById('profile-pic');
 const coverPhoto = document.getElementById('cover-photo');
 
-// Cargar las imágenes y datos guardados en localStorage al cargar la página
-window.addEventListener('load', () => {
-    const savedImage = localStorage.getItem('profileImage');
-    if (savedImage) {
-        profilePic.src = savedImage; // Establece la imagen de perfil
+async function loadProfilePhoto() {
+    try {
+        const response = await fetch(`http://localhost:4000/images/${userId}/photo`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            profilePic.src = `${result.data}`;
+        } else {
+            const result = await response.json();
+            console.error("Error al cargar la imagen de perfil", result.message);
+            profilePic.src = 'ruta/por/defecto/profile-placeholder.png'; // Placeholder para imagen de perfil
+        }
+    } catch (error) {
+        console.error("Error en la carga de la imagen de perfil:", error);
     }
-
-    const savedCoverImage = localStorage.getItem('coverImage');
-    if (savedCoverImage) {
-        coverPhoto.style.backgroundImage = `url('${savedCoverImage}')`; // Establece la imagen de portada
-    }
-
-    const savedUsername = localStorage.getItem('username');
-    if (savedUsername) {
-        usernameElement.innerText= savedUsername; // Establece el nombre de usuario
-    }
-
-    const savedDescription = localStorage.getItem('userDescription');
-    if (savedDescription) {
-        descriptionElement.innerText = savedDescription; // Establece la descripción del usuario
-    }
-});
-
-// Cambia la imagen de perfil cuando se selecciona un archivo
-fileInputAvatar.addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            profilePic.src = e.target.result; // Muestra la nueva imagen de perfil
-            localStorage.setItem('profileImage', e.target.result); // Guarda la imagen en localStorage
-        };
-        reader.readAsDataURL(file);
-    }
-});
-
-// Cambia la imagen de portada cuando se selecciona un archivo
-fileInputCover.addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            coverPhoto.style.backgroundImage = `url('${e.target.result}')`; // Muestra la nueva imagen de portada
-            localStorage.setItem('coverImage', e.target.result); // Guarda la imagen en localStorage
-        };
-        reader.readAsDataURL(file);
-    }
-});
-
-// Muestra u oculta el formulario de edición
-function toggleEditForm() {
-    const formContainer = document.getElementById('edit-form-container');
-    formContainer.classList.toggle('hidden'); // Alterna la visibilidad del formulario
-
-    // Precargar los datos actuales en el formulario de edición
-    document.getElementById('nombre').value = document.getElementById('username').textContent;
-    document.getElementById('descripcion').value = document.getElementById('user-description').textContent;
-    document.getElementById('telefono').value = document.getElementById('user-phone').textContent;
-    document.getElementById('email').value = document.getElementById('user-email').textContent;
 }
 
-// Actualiza el perfil con los valores ingresados en el formulario
-function updateProfile() {
-    // Obtener los valores del formulario
-    const nombre = document.getElementById('nombre').value;
-    const descripcion = document.getElementById('descripcion').value;
-    const telefono = document.getElementById('telefono').value;
-    const email = document.getElementById('email').value;
+async function loadCoverPhoto() {
+    try {
+        const response = await fetch(`http://localhost:4000/images/${userId}/front_page`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
-    // Actualizar el contenido del perfil en la página
-    document.getElementById('username').textContent = nombre;
-    document.getElementById('user-description').textContent = descripcion;
-    document.getElementById('user-phone').textContent = telefono;
-    document.getElementById('user-email').textContent = email;
+        if (response.ok) {
+            const result = await response.json();
+            console.log(result); // Esto te ayudará a verificar que la respuesta contiene los datos correctos
+            coverPhoto.style.backgroundImage = `url(${result.data})`;
 
-    // Ocultar el formulario después de guardar los cambios
-    toggleEditForm();
+        } else {
+            const result = await response.json();
+            console.error("Error al cargar la imagen de portada", result.message);
+            coverPhoto.style.backgroundImage = 'url(ruta/por/defecto/cover-placeholder.png)'; // Placeholder para portada
+        }
+    } catch (error) {
+        console.error("Error en la carga de la imagen de portada:", error);
+    }
 }
+
+// Función para subir una imagen al servidor
+async function uploadImage(type, file) {
+    const formData = new FormData();
+    formData.append('image', file);
+
+    const response = await fetch(`http://localhost:4000/images/upload/${userId}/${type}`, {
+        method: 'POST',
+        body: formData
+    });
+    const result = await response.json();
+    alert(result.message);
+
+    // Recargar la imagen desde el servidor después de subirla
+    if (type === 'profile') {
+        loadProfilePhoto();  // Actualiza la imagen de perfil
+    } else if (type === 'cover') {
+        loadCoverPhoto();  // Actualiza la imagen de portada
+    }
+}
+
+// Eventos para abrir el selector de archivos
+document.querySelector('.boton-avatar').addEventListener('click', () => {
+    profilePicInput.click();
+});
+document.querySelector('.boton-portada').addEventListener('click', () => {
+    coverPhotoInput.click();
+});
+
+// Eventos para subir la imagen seleccionada
+profilePicInput.addEventListener('change', () => {
+    const file = profilePicInput.files[0];
+    if (file) uploadImage('profile', file);
+});
+coverPhotoInput.addEventListener('change', () => {
+    const file = coverPhotoInput.files[0];
+    if (file) uploadImage('cover', file);
+});
+
+// Cargar las imágenes al cargar la página
+loadProfilePhoto();
+loadCoverPhoto();

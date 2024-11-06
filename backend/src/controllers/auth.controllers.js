@@ -29,11 +29,14 @@ export async function login(req, res) {
     req.session.token = token;
 
     // Almacenar el token en una cookie segura
-    res.cookie("authToken", token, {
-      httpOnly: true, // La cookie no es accesible desde JavaScript
-      secure: false, // Cambiar a true en producción con HTTPS
-      maxAge: 3600000, // Expiración en milisegundos (1 hora)
-    });
+    res.cookie('authToken', token, {
+      httpOnly: false, // Cambia a false para poder acceder a ella
+      secure: false, // Cambia a true si estás usando HTTPS
+      sameSite: 'Lax', // Para asegurar que funcione en localhost
+      path: '/' // Asegura que esté disponible en todas las rutas
+  });
+  
+  
 
     return res.json({ message: "Inicio de sesión exitoso" });
   } catch (error) {
