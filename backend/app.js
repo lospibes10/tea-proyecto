@@ -6,16 +6,17 @@ import cors from 'cors';
 import morgan from 'morgan';
 import { PORT } from './src/config/config.js';
 import { sessionRoutes } from './src/routes/routes.js';
-
+import { imageRouter } from './src/routes/imagesRoutes.js';
 
 const app = express();
 
-
+// Configuración de CORS
 app.use(cors({
     origin: ['http://localhost:5500', 'http://localhost:3000', 'http://127.0.0.1:3000'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
+
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
@@ -26,7 +27,10 @@ app.use(session({
     cookie: { secure: false } // Usar 'true' si usas HTTPS
 }));
 
-app.use(sessionRoutes)
+// Rutas
+app.use(sessionRoutes);
+app.use(imageRouter);
+
 
 // Servidor escuchando
 app.listen(PORT, () => {

@@ -1,0 +1,75 @@
+.main-content {
+    flex: 1;
+    padding: 2rem 0;
+  }
+
+  .navbar {
+    background-color: #005f73;
+    padding: 1rem;
+  }
+
+  .navbar-brand img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .nav-link,
+  .nav-icon {
+    color: white !important;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .nav-link:hover,
+  .nav-icon:hover {
+    color: #ffb703 !important;
+    transform: scale(1.05);
+  }
+
+  .nav-icon {
+    font-size: 2rem;
+  }
+
+  .btn-custom {
+    background-color: #023e8a;
+    border-color: #023e8a;
+    color: white;
+    font-family: "Arial", sans-serif;
+    transition: background-color 0.3s ease, border-color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .btn-custom:hover {
+    background-color: #0077b6 !important;
+    border-color: #0077b6 !important;
+    transform: translateY(-2px);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .logo-img {
+    height: 6rem;
+    width: auto;
+  }
+
+  .link {
+    font-size: 0.9rem;
+    color: #f8f9fa;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .link:hover {
+    color: #ffb703;
+    text-decoration: underline;
+  }
+
+  .divider {
+    margin: 1.5rem 0;
+    border: 1px solid #495057;
+  }
