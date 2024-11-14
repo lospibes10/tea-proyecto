@@ -50,14 +50,19 @@ export async function register(req, res) {
   const conexion = await connection();
   
   try {
-    // Verificar si el usuario o el email ya existen
-    const [existingUser] = await conexion.query("SELECT * FROM users WHERE username = ? OR email = ?", [username, email]);
-    
-    if (existingUser.length > 0) {
-      return res.status(400).json({ msg: "El username o email ya están en uso" });
+    // Verificar si el username ya existe
+    const [existingUsername] = await conexion.query("SELECT * FROM users WHERE username = ?", [username]);
+    if (existingUsername.length > 0) {
+      return res.status(400).json({ msg: "El username ya está en uso" });
+    }
+
+    // Verificar si el email ya existe
+    const [existingEmail] = await conexion.query("SELECT * FROM users WHERE email = ?", [email]);
+    if (existingEmail.length > 0) {
+      return res.status(400).json({ msg: "El email ya está en uso" });
     }
     
-    // Insertar el nuevo usuario si no existe duplicado
+    // Insertar el nuevo usuario si no existen duplicados
     const [nuevoUsuario] = await conexion.query("INSERT INTO users (name, surname, username, password, phone, email) VALUES (?, ?, ?, ?, ?, ?)", [name, surname, username, password, phone, email]);
     
     if (!nuevoUsuario) {

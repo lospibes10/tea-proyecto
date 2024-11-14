@@ -8,7 +8,7 @@ document.getElementById('register-form').addEventListener('submit', async functi
     const phone = document.getElementById('phone').value;
     const email = document.getElementById('email').value;
 
-
+    // Validar campos obligatorios
     if (!username || !password) {
         document.getElementById('message').innerText = 'Por favor, completa todos los campos.';
         return;
@@ -21,15 +21,26 @@ document.getElementById('register-form').addEventListener('submit', async functi
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({name, surname, username, password, phone, email})
+            body: JSON.stringify({ name, surname, username, password, phone, email })
         });
 
+        const data = await response.json();
+
         if (!response.ok) {
-            document.getElementById('message').innerText = 'Registro fallido. Intenta nuevamente.';
+            // Mostrar mensaje de error específico según el campo duplicado
+            if (data.msg === "El username ya está en uso") {
+                document.getElementById('message').innerText = 'El nombre de usuario ya está registrado. Por favor, elige otro.';
+                document.getElementById('username').classList.add('error');
+            } else if (data.msg === "El email ya está en uso") {
+                document.getElementById('message').innerText = 'El email ya está registrado. Por favor, utiliza otro.';
+                document.getElementById('email').classList.add('error');
+            } else {
+                document.getElementById('message').innerText = 'Registro fallido. Intenta nuevamente.';
+            }
             return;
         }
 
-        const data = await response.json();
+        // Redireccionar en caso de éxito
         window.location.href = 'home.html';
 
     } catch (error) {
