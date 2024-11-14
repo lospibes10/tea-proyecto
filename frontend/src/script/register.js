@@ -1,8 +1,13 @@
 document.getElementById('register-form').addEventListener('submit', async function (event) {
     event.preventDefault();
 
+    const name = document.getElementById('name').value;
+    const surname = document.getElementById('surname').value;
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+
 
     if (!username || !password) {
         document.getElementById('message').innerText = 'Por favor, completa todos los campos.';
@@ -16,7 +21,7 @@ document.getElementById('register-form').addEventListener('submit', async functi
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify({name, surname, username, password, phone, email})
         });
 
         if (!response.ok) {

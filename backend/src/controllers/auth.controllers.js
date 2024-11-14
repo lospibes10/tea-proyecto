@@ -45,22 +45,34 @@ export async function login(req, res) {
   }
 }
 
-export async function register(req, res){
-  const {name, surname, username, password, phone, email} = req.body
-  const conexion = await connection()
+export async function register(req, res) {
+  const { name, surname, username, password, phone, email } = req.body;
+  const conexion = await connection();
+  
   try {
-    const nuevoUsuario = await conexion.query("INSERT INTO users (name, surname, username, password, phone, email) VALUES (?, ?, ?, ?, ?, ?)", [name, surname, username, password, phone, email])
+    // Verificar si el usuario o el email ya existen
+    const [existingUser] = await conexion.query("SELECT * FROM users WHERE username = ? OR email = ?", [username, email]);
     
-    if(!nuevoUsuario){
-      res.json({msg: "Error al crear el usuario"})
+    if (existingUser.length > 0) {
+      return res.status(400).json({ msg: "El username o email ya están en uso" });
+    }
+    
+    // Insertar el nuevo usuario si no existe duplicado
+    const [nuevoUsuario] = await conexion.query("INSERT INTO users (name, surname, username, password, phone, email) VALUES (?, ?, ?, ?, ?, ?)", [name, surname, username, password, phone, email]);
+    
+    if (!nuevoUsuario) {
+      res.json({ msg: "Error al crear el usuario" });
     } else {
-      res.json(nuevoUsuario)
+      res.json({ msg: "Usuario creado exitosamente", nuevoUsuario });
     }
   } catch (error) {
-    console.log("Error al crear el nuevo usuario")
+    console.log("Error al crear el nuevo usuario", error);
+    res.status(500).json({ msg: "Error interno del servidor" });
+  } finally {
+    conexion.end(); // Cerrar la conexión después de completar la operación
   }
-
 }
+
 
 export function session(req, res) {
   console.log(req.user);

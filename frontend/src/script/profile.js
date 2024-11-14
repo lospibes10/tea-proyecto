@@ -120,3 +120,11 @@ coverPhotoInput.addEventListener('change', () => {
 // Cargar las imágenes al cargar la página
 loadProfilePhoto();
 loadCoverPhoto();
+
+export function toggleEditForm() {
+    const editForm = document.querySelector('.hidden');
+    editForm.classList.toggle('hidden');
+};
+
+const editButton = document.querySelector('.boton-editar');
+editButton.addEventListener('click', toggleEditForm);
