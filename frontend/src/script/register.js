@@ -8,7 +8,11 @@ document.getElementById('register-form').addEventListener('submit', async functi
     const phone = document.getElementById('phone').value;
     const email = document.getElementById('email').value;
 
+<<<<<<< HEAD
     // Validar campos obligatorios
+=======
+
+>>>>>>> origin/EliasTiñuk
     if (!username || !password) {
         document.getElementById('message').innerText = 'Por favor, completa todos los campos.';
         return;
@@ -21,6 +25,7 @@ document.getElementById('register-form').addEventListener('submit', async functi
             headers: {
                 'Content-Type': 'application/json'
             },
+<<<<<<< HEAD
             body: JSON.stringify({ name, surname, username, password, phone, email })
         });
 
@@ -41,6 +46,17 @@ document.getElementById('register-form').addEventListener('submit', async functi
         }
 
         // Redireccionar en caso de éxito
+=======
+            body: JSON.stringify({name, surname, username, password, phone, email})
+        });
+
+        if (!response.ok) {
+            document.getElementById('message').innerText = 'Registro fallido. Intenta nuevamente.';
+            return;
+        }
+
+        const data = await response.json();
+>>>>>>> origin/EliasTiñuk
         window.location.href = 'home.html';
 
     } catch (error) {
