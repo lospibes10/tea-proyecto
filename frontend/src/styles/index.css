@@ -43,15 +43,9 @@
     border-color: var(--input-border);
     box-shadow: none;
   }
-  
-  .form-control:placeholder-shown{
-  color: var(--text-color);
-  }
-  
-  
-  label {
+
+  .form-control::placeholder{
     color: var(--label-color);
-    font-weight: 500;
   }
   
   .custom-btn {
