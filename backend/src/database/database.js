@@ -5,7 +5,7 @@ export async function connection (){
         const newConnection = await mysql2.createConnection({
             host: 'localhost',
             user: 'root',
-            database: 'db_system'
+            database: 'tea_proyecto'
         })
         return newConnection;
     } catch (error) {

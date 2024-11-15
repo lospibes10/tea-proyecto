@@ -30,3 +30,22 @@ document.getElementById('logout').addEventListener('click', async () => {
         window.location.href = 'index.html';
     }
 });
+
+const carousel = document.getElementById("carousel");
+      const prev = document.getElementById("prev");
+      const next = document.getElementById("next");
+
+      let currentIndex = 0;
+
+      prev.addEventListener("click", () => {
+        currentIndex =
+          currentIndex === 0 ? carousel.children.length - 1 : currentIndex - 1;
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+      });
+
+      next.addEventListener("click", () => {
+        currentIndex =
+          currentIndex === carousel.children.length - 1 ? 0 : currentIndex + 1;
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+      });
+

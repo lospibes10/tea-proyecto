@@ -1,9 +1,9 @@
-import { defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
-    server:{
+    server: {
         port: 3000,
-        open:"index.html"
+        open: "index.html"
     },
     root: './',
     base: '/',
@@ -13,4 +13,7 @@ export default defineConfig({
         assetsDir: 'assets',
     },
     plugins: [],
-})
+    optimizeDeps: {
+        include: ["jwt-decode"], // Optimiza la dependencia de jwt-decode
+    },
+});
