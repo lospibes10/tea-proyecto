@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formador de Palabras</title>
+    <link rel="stylesheet" href="../src/styles/styles_palabras.css">
+</head>
+<body>
+    <h1>Formador de Palabras con Pictogramas</h1>
+
+    <!-- Clasificación de los pictogramas -->
+    <div class="categoria">
+        <h2>Objetos</h2>
+        <div id="objetos">
+            <img src="../src/img/casa.jpg" alt="Casa" class="pictograma" data-palabra="casa">
+            <img src="../src/img/pelota.jpg" alt="Pelota" class="pictograma" data-palabra="Pelota">
+            <img src="../src/img/jugar.jpg" alt="Jugar" class="pictograma" data-palabra="jugar">
+            <img src="../src/img/sol.jpg" alt="Sol" class="pictograma" data-palabra="sol">
+        </div>
+    </div>
+
+    <div class="categoria">
+        <h2>Mascotas</h2>
+        <div id="mascotas">
+            <img src="../src/img/gato.jpg" alt="Gato" class="pictograma" data-palabra="gato">
+            <img src="../src/img/fila-brasileiro.jpg" alt="Perro" class="pictograma" data-palabra="perro">
+            <img src="../src/img/lobo-siberiano.jpg" alt="Lobo" class="pictograma" data-palabra="Lobo">
+        </div>
+    </div>
+
+    <div class="categoria">
+        <h2>Partes del Cuerpo</h2>
+        <div id="cuerpo">
+            <img src="../src/img/cabeza.jpg" alt="Cabeza" class="pictograma" data-palabra="cabeza">
+            <img src="../src/img/mano.jpg" alt="Mano" class="pictograma" data-palabra="mano">
+            <img src="../src/img/ojos.jpg" alt="Ojos" class="pictograma" data-palabra="ojos">
+            <img src="../src/img/pie.jpg" alt="Pie" class="pictograma" data-palabra="pie">
+        </div>
+    </div>
+
+    <!-- Resultado de la frase -->
+    <div id="resultado">Haz clic en los pictogramas para formar palabras</div>
+
+    <!-- Botones de acción -->
+    <button id="confirmar">Confirmar Frase</button>
+    <button id="borrarTodo">Borrar Todo</button>
+    <button id="borrarUltima">Borrar Última Palabra</button>
+
+    <!-- Enlaza el archivo script.js -->
+    <script src="script.js"></script>
+</body>
+</html>
